@@ -11,3 +11,4 @@ Add the `akryum:vue-router2` package:
     meteor add akryum:vue-router2
 
 Add routes using [this guide](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-router2#usage).
+# find-tutor-core
