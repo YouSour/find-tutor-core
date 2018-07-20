@@ -6,10 +6,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "element-ui": "^2.4.4",
     "meteor-node-stubs": "~0.2.0",
     "vue": "^2.0.0",
     "vue-meteor-tracker": "^1.0.3",
-    "vue-router": "^2.0.0"
+    "vue-router": "^2.0.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "vue": "^2.0.0-rc.8",

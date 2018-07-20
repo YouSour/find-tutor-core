@@ -27,3 +27,5 @@ akryum:vue-stylus
 shell-server@0.3.1
 dynamic-import
 underscore
+akryum:vue-less
+akryum:vue-sass

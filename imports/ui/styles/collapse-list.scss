@@ -1,0 +1,38 @@
+.collapse-list {
+  .collapse-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .el-row {
+    margin: 0px !important;
+  }
+  .el-col {
+    padding: 5px 5px 5px 5px;
+  }
+  .el-col:hover {
+    border-radius: 4px;
+    // padding: 5px 5px 5px 5px;
+    background: #e5e9f2;
+  }
+
+  .list-title {
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 7px;
+  }
+  .list-title:hover {
+    color: #409eff;
+    cursor: pointer;
+    transition: 0.15s ease-out;
+    transition-property: initial;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+    transition-delay: initial;
+  }
+  .list-memo {
+    font-size: 12px;
+    font-weight: 300;
+    color: #606266;
+  }
+}

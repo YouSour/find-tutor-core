@@ -1,0 +1,155 @@
+.report-card {
+  width: 100%;
+  padding-bottom: 15px;
+
+  .card-header {
+    margin: -7px 0px 20px;
+
+    .header-left {
+      float: left;
+      /*margin-top: -7px;*/
+    }
+    .header-right {
+      float: right;
+      /*margin-top: -7px;*/
+    }
+  }
+}
+
+// Show part checkbox title
+.part-title {
+  text-transform: capitalize;
+}
+
+$body-color: #34495e;
+$title-color: #2c3e50;
+$filter-border-bottom-color: #ddd;
+$table-th-bgcolor: #f5f7fa;
+$table-th-color: #2c3e50;
+$table-td-color: #34495e;
+$table-border-bottom-color: #ddd;
+
+.report-body {
+  color: $body-color;
+  font-size: 12px;
+
+  .header {
+    text-align: center;
+    padding-bottom: 10px;
+    color: $title-color;
+
+    .company-name {
+      font-size: 20px;
+      font-weight: 500;
+      font-family: 'Moul', Helvetica Neue, Helvetica, PingFang SC,
+        Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif !important;
+    }
+    .report-name {
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding-top: 5px;
+      font-family: 'Moul', PingFang SC, Hiragino Sans GB, Microsoft YaHei,
+        SimSun, sans-serif !important;
+    }
+    .report-period {
+      font-size: 14px;
+      font-weight: 500;
+      padding-top: 10px;
+    }
+    .company-address {
+      // .table-content': {
+      //   'border-collapse': 'collapse',
+      //   width: '100%',}
+    }
+  }
+
+  .filter {
+    padding-bottom: 0px;
+    .title {
+      color: $title-color;
+      font-weight: 500;
+    }
+  }
+
+  .content {
+    padding-bottom: 5px;
+  }
+
+  .timestamp {
+    font-size: 10px;
+    font-weight: 300;
+    font-style: italic;
+    padding-bottom: 10px;
+  }
+  .footer {
+    padding-bottom: 10px;
+    .title {
+      color: $title-color;
+      font-weight: 600;
+    }
+  }
+
+  .signature {
+    padding-top: 10px;
+    clear: both;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .not-btn {
+    padding-left: 7px;
+  }
+  .note-textarea {
+    text-align: right;
+    margin: 0;
+  }
+
+  .table-content {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+    line-height: 23px;
+
+    th {
+      color: $table-th-color;
+      border-bottom: 1px solid $table-border-bottom-color;
+      padding: 5px 5px;
+      background-color: $table-th-bgcolor;
+    }
+    td {
+      color: $table-td-color;
+      border-bottom: 1px solid $table-border-bottom-color;
+      padding: 5px 5px;
+    }
+    .text-left {
+      text-align: left !important;
+    }
+    .text-right {
+      text-align: right !important;
+    }
+    .text-center {
+      text-align: center !important;
+    }
+  }
+
+  // Column Size
+  .colspan-6 {
+    flex-direction: column;
+    width: 25%;
+    font-size: 12px;
+    float: left;
+  }
+  .colspan-8 {
+    flex-direction: column;
+    width: 33%;
+    font-size: 12px;
+    float: left;
+  }
+  .colspan-12 {
+    flex-direction: column;
+    width: 50%;
+    font-size: 12px;
+    float: left;
+  }
+}

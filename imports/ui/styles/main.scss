@@ -1,0 +1,62 @@
+a:-webkit-any-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* Container */
+.container {
+  height: 100vh;
+}
+
+/* Header */
+.header {
+  background-color: #f5f7fa;
+  color: #303133;
+  line-height: 55px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 55px !important;
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 300;
+    padding-right: 10px;
+    line-height: 50px;
+  }
+
+  .menu-left {
+    position: absolute;
+  }
+
+  .menu-right {
+    float: right;
+  }
+}
+
+/* Content */
+.content {
+  padding: 15px 20px 0px;
+  background: #eee;
+
+  .breadcrumb {
+    margin: 0px 0px 15px;
+  }
+
+  .router-view {
+    min-height: calc(100vh - 190px);
+    background-color: white;
+    margin: 0px 0px 0px;
+    padding: 25px 25px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 13px 0 10px;
+  }
+  .footer span {
+    font-size: 13px;
+    color: #666;
+  }
+}
