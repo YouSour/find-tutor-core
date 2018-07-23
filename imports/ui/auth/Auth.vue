@@ -11,7 +11,7 @@
       <login></login>
       <register></register>
   </div>
-  </div.auth>
+  </div>
 </template>
 
 <script>
@@ -33,12 +33,12 @@ export default {
 </script>
 
 <style>
-.auth > div {
+/* .auth > div {
   display: inline-flex;
 }
 .auth > div:first-child {
   padding-right: 1rem;
-}
+} */
 input,
 label {
   display: block;

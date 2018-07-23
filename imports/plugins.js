@@ -14,10 +14,9 @@ Vue.use(DataTablesServer);
 // Font Awesome 5
 import "/imports/ui/styles/fontawesome-all";
 
-// import WebFont from "webfontloader";
-
-// WebFont.load({
-//   google: {
-//     families: ["Abel:regular,bold", "Lato:regular,bold,italic"]
-//   }
-// });
+import WebFont from "webfontloader";
+WebFont.load({
+  google: {
+    families: ["Abel:regular,bold", "Lato:regular,bold,italic"]
+  }
+});
