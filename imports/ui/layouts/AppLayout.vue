@@ -50,7 +50,7 @@
               <!-- Footer -->
               <div class="footer">
                 <span>Copyright © 2018
-                  <a href="https://colorlib.com">Find Tutors</a>. All rights reserved. Template by Ratanak.
+                  <a href="https://colorlib.com">Find Tutors</a>. All rights reserved.
                 </span>
               </div>
               <!-- <div class="footer">
@@ -66,7 +66,7 @@
       v-if="!user"
     >
       <login></login>
-      <register></register>
+      <!-- <register></register> -->
   </div>
   </div>
 </template>
@@ -98,7 +98,7 @@ export default {
     return {
       copyright: `
                   © 2014-}
-                  Rabbit Technology
+                  Find Tutor
                   (V 1.0)
                   `
     };
@@ -109,4 +109,8 @@ export default {
 @import "~imports/ui/styles/main.scss";
 @import "~imports/ui/styles/aside-menu.scss";
 @import "~imports/ui/styles/header-menu.scss";
+.auth {
+  background-color: antiquewhite;
+  height: 100vh;
+}
 </style>
