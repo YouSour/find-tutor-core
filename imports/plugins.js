@@ -6,13 +6,18 @@ import "element-ui/lib/theme-chalk/index.css";
 import locale from "element-ui/lib/locale/lang/en";
 Vue.use(ElementUI, { locale, size: "small" });
 
+// Data table
+import { DataTables, DataTablesServer } from "vue-data-tables";
+Vue.use(DataTables);
+Vue.use(DataTablesServer);
+
 // Font Awesome 5
-import "/imports/ui/styles/fontawesome-all.css";
+import "/imports/ui/styles/fontawesome-all";
 
-import WebFont from "webfontloader";
+// import WebFont from "webfontloader";
 
-WebFont.load({
-  google: {
-    families: ["Abel:regular,bold", "Lato:regular,bold,italic"]
-  }
-});
+// WebFont.load({
+//   google: {
+//     families: ["Abel:regular,bold", "Lato:regular,bold,italic"]
+//   }
+// });
