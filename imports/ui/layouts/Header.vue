@@ -22,6 +22,7 @@
     <el-dropdown
       trigger="click"
       class="avatar-container right-menu-item"
+      @command="handleCommand"
     >
       <div class="avatar-wrapper">
         <img
@@ -45,9 +46,10 @@
             </div>
             <div class="content">
               <div class="name">
-                Heng YouSour
+                <!-- Heng YouSour -->
+                {{user.username}}
               </div>
-              <span class="email">yousourkh@example.com</span>
+              <span class="email">{{user.emails[0].address}}</span>
             </div>
           </div>
           </el-dropdown-item>
@@ -71,7 +73,19 @@
 <script>
 // import "../../public/js/main.js";
 export default {
-  name: "HeaderMenu"
+  name: "HeaderMenu",
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    }
+  },
+  methods: {
+    handleCommand(command) {
+      if (command == "logout") {
+        this.$store.dispatch("logout");
+      }
+    }
+  }
 };
 </script>
 

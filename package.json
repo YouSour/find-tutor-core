@@ -7,12 +7,19 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
     "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "element-ui": "^2.4.4",
     "meteor-node-stubs": "~0.2.0",
     "vue": "^2.0.0",
+    "vuex": "^2.1.1",
     "vue-meteor-tracker": "^1.0.3",
     "vue-router": "^2.0.0",
-    "webfontloader": "^1.6.28"
+    "simpl-schema": "^1.5.0",
+    "vue-data-tables": "^3.4.2",
+    "webfontloader": "^1.6.28",
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "vue": "^2.0.0-rc.8",

@@ -9,6 +9,10 @@
         <i class="fa fa-tachometer-alt aside-menu-icon"></i>
         <span>Dashboard</span>
       </el-menu-item>
+      <el-menu-item index="users">
+        <i class="fa fa-tachometer-alt aside-menu-icon"></i>
+        <span>Users</span>
+      </el-menu-item>
       <el-menu-item index="page1">
         <i class="fas fa-money-bill-alt aside-menu-icon"></i>
         <span>Page 1</span>

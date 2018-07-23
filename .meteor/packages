@@ -16,16 +16,53 @@ standard-minifier-js@2.3.4    # JS minifier run for production mode
 es5-shim@4.8.0                # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.11.1              # Enable ECMAScript2015+ syntax in app code
 
-autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
-static-html@1.1.12
 akryum:vue
-akryum:vue-component
-session@1.1.7
 akryum:vue-router2
 akryum:vue-stylus
 shell-server@0.3.1
-dynamic-import
-underscore
+mdg:validation-error
+
+#--- Core ---
+static-html
+dynamic-import@0.4.0
+ddp-rate-limiter@1.0.7
+http@1.4.1
+check@1.3.1
+accounts-base@1.4.2
+accounts-password@1.5.1
+session@1.1.7
+ejson@1.1.0
+less@2.7.12
+
+#--- Community ---
+# Collection
+lai:collection-extensions
+dburles:mongo-collection-instances
+aldeed:collection2-core
+aldeed:schema-index
+matb33:collection-hooks
+sakulstra:aggregate
+cultofcoders:grapher
+
+# Method
+mdg:validated-method
+didericis:callpromise-mixin
+
+# Roles
+alanning:roles
+ongoworks:security
+
+# Path & File
+ostrio:meteor-root
+pfafman:filesaver
+cfs:standard-packages
+cfs:filesystem
+
+# UI
+akryum:vue-component
 akryum:vue-less
 akryum:vue-sass
+cultofcoders:persistent-session
+zuuk:stale-session
+nathantreid:static-assets
+
