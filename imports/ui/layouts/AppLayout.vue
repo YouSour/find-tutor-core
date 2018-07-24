@@ -110,7 +110,7 @@ export default {
 @import "~imports/ui/styles/aside-menu.scss";
 @import "~imports/ui/styles/header-menu.scss";
 .auth {
-  background-color: antiquewhite;
+  background-color: #e5e5e5;
   height: 100vh;
 }
 </style>

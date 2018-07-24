@@ -17,6 +17,6 @@ import "/imports/ui/styles/fontawesome-all";
 import WebFont from "webfontloader";
 WebFont.load({
   google: {
-    families: ["Abel:regular,bold", "Lato:regular,bold,italic"]
+    families: ["Anton:regular,bold", "Lato:regular,bold,italic"]
   }
 });
