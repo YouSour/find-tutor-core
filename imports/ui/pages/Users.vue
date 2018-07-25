@@ -32,8 +32,8 @@
           >
             <template slot-scope="scope">
               <span :class="softRemoveClassName(scope.row.removed)">
-                <span v-if="title.prop === 'postDate'">
-                  {{ $moment(scope.row.postDate).format('DD/MM/YYY') }}
+                <span v-if="title.prop === 'CreatedAt'">
+                  {{ $moment(scope.row.CreatedAt).format('DD/MM/YYY') }}
                 </span>
                 <span v-else>{{ scope.row[title.prop] }}</span>
               </span>
@@ -92,12 +92,15 @@ export default {
       loading: false,
       tableData: [],
       tableTitles: [
-        { label: "ID", prop: "_id" },
-        { label: "Name", prop: "username" }
+        { label: "Created Date", prop: "createdAt" },
+        // { label: "ID", prop: "_id" },
+        { label: "Name", prop: "username" },
+        // { label: "Type", prop: "profile.type" },
+        { label: "Status", prop: "profile" }
       ],
       tableFilters: [
         {
-          prop: ["_id", "username"],
+          prop: ["_id", "username", "profile.status"],
           value: ""
         }
       ],
@@ -126,6 +129,7 @@ export default {
           options: {}
         })
         .then(result => {
+          console.log(result);
           this.tableData = result;
           this.loading = false;
         })
