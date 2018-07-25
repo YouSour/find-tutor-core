@@ -45,9 +45,8 @@
               <el-button
                 size="large"
                 :loading="loading"
-                type="primary"
                 @click="submitForm"
-                style="width:100%; margin-top:18px;"
+                class="btn"
               >
                 Log In
                 </el-button>
@@ -95,3 +94,29 @@ export default {
   }
 };
 </script>
+<style>
+.btn {
+  width: 100% !important;
+  margin-top: 10px !important;
+  margin-bottom: 5px !important;
+  border: none;
+  background: #07a7e3;
+  background: -moz-linear-gradient(-45deg, #07a7e3 0%, #32dac3 100%);
+  background: -webkit-linear-gradient(-45deg, #07a7e3 0%, #32dac3 100%);
+  background: linear-gradient(135deg, #07a7e3 0%, #32dac3 100%);
+  text-transform: uppercase;
+  color: #fff !important;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #fff;
+  background: #06b9fa;
+  background: -moz-linear-gradient(-45deg, #06b9fa 0%, #32dac3 100%);
+  background: -webkit-linear-gradient(-45deg, #06b9fa 0%, #32dac3 100%);
+  background: linear-gradient(135deg, #06b9fa 0%, #32dac3 100%);
+}
+.btn:active,
+:visited {
+  color: #fff !important;
+}
+</style>
