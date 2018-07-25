@@ -7,7 +7,7 @@ export default [
   {
     path: "/users",
     name: "users",
-    component: "/imports/ui/auth/Users.vue"
+    component: "/imports/ui/pages/Users.vue"
   },
   {
     path: "/page1",

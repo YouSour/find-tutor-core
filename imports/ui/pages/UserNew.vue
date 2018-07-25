@@ -276,7 +276,6 @@ export default {
   },
   mounted() {
     // this.getRoles();
-    // this.getBranches();
   },
   methods: {
     // getRoles() {
@@ -284,16 +283,6 @@ export default {
     //     .callPromise()
     //     .then(result => {
     //       this.roleOpts = result;
-    //     })
-    //     .catch(error => {
-    //       Notify.error({ message: error });
-    //     });
-    // },
-    // getBranches() {
-    //   lookupBranch
-    //     .callPromise()
-    //     .then(result => {
-    //       this.branchPermissionOpts = result;
     //     })
     //     .catch(error => {
     //       Notify.error({ message: error });
@@ -307,7 +296,7 @@ export default {
           // Make data
           const data = _.clone(this.form);
           delete data.confirmPassword;
-
+          console.log(data);
           insertUser
             .callPromise({ user: data })
             .then(result => {

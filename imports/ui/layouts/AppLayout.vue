@@ -66,7 +66,6 @@
       v-if="!user"
     >
       <login></login>
-      <!-- <register></register> -->
   </div>
   </div>
 </template>
@@ -77,16 +76,12 @@ import HeaderMenu from "/imports/ui/layouts/Header.vue";
 // import AppFooter from "/imports/ui/AppFooter.vue";
 
 import Login from "/imports/ui/auth/Login.vue";
-import Logout from "/imports/ui/auth/Logout.vue";
-import Register from "/imports/ui/auth/Register.vue";
 
 export default {
   components: {
     SidebarMenu,
     HeaderMenu,
-    login: Login,
-    logout: Logout,
-    register: Register
+    login: Login
     // AppFooter
   },
   computed: {
@@ -97,7 +92,7 @@ export default {
   data() {
     return {
       copyright: `
-                  © 2014-}
+                  © 2018-}
                   Find Tutor
                   (V 1.0)
                   `

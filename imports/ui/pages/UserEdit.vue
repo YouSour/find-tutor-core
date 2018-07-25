@@ -282,18 +282,9 @@ export default {
     //       Notify.error({ message: error });
     //     });
     // },
-    // getBranches() {
-    //   lookupBranch
-    //     .callPromise()
-    //     .then(result => {
-    //       this.branchPermissionOpts = result;
-    //     })
-    //     .catch(error => {
-    //       Notify.error({ message: error });
-    //     });
-    // },
     getDataUpdate() {
       let result = this.updateDoc;
+      console.log(result);
       this.form = {
         _id: result._id,
         fullName: result.profile.fullName,
