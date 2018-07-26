@@ -2,13 +2,13 @@ import { Meteor } from "meteor/meteor";
 import SimpleSchema from "simpl-schema";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { CallPromiseMixin } from "meteor/didericis:callpromise-mixin";
-// import rateLimit from "../../modules/rate-limit";
+import rateLimit from "/imports/utils/rate-limit";
 
 import { UserInsertSchema, UserUpdateSchema } from "./users";
 
 // Find
-export const findUsers = new ValidatedMethod({
-  name: "Users.methods.find",
+export const findUser = new ValidatedMethod({
+  name: "User.methods.find",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     selector: {
@@ -25,14 +25,13 @@ export const findUsers = new ValidatedMethod({
   run({ selector, options }) {
     if (Meteor.isServer) {
       return Meteor.users.find(selector, options).fetch();
-      // return Meteor.users.find().fetch();
     }
   }
 });
 
 // Find One
 export const findOneUser = new ValidatedMethod({
-  name: "Users.methods.findOneUser",
+  name: "User.methods.findOneUser",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     _id: String
@@ -46,7 +45,7 @@ export const findOneUser = new ValidatedMethod({
 
 // Insert
 export const insertUser = new ValidatedMethod({
-  name: "Users.methods.insertUser",
+  name: "User.methods.insertUser",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     user: UserInsertSchema
@@ -81,7 +80,7 @@ export const insertUser = new ValidatedMethod({
 
 // Update
 export const updateUser = new ValidatedMethod({
-  name: "Users.methods.updateUser",
+  name: "User.methods.updateUser",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     user: UserUpdateSchema
@@ -126,7 +125,7 @@ export const updateUser = new ValidatedMethod({
 });
 
 export const removeUser = new ValidatedMethod({
-  name: "Users.methods.removeUser",
+  name: "User.methods.removeUser",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     _id: { type: String }
@@ -145,14 +144,6 @@ export const removeUser = new ValidatedMethod({
   }
 });
 
-// rateLimit({
-//   methods: [
-//     "Users.methods.find",
-//     "Users.methods.findOneUser",
-//     "Users.methods.insertUser",
-//     "Users.methods.updateUser",
-//     "Users.methods.removeUser"
-//   ],
-//   limit: 5,
-//   timeRange: 1000
-// });
+rateLimit({
+  methods: [findUser, findOneUser, insertUser, updateUser, removeUser]
+});

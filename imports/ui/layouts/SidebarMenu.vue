@@ -10,18 +10,18 @@
         <span>Dashboard</span>
       </el-menu-item>
       <el-menu-item index="users">
-        <i class="fa fa-tachometer-alt aside-menu-icon"></i>
+        <i class="fa fa-user aside-menu-icon"></i>
         <span>Users</span>
       </el-menu-item>
       <el-menu-item index="page1">
-        <i class="fas fa-money-bill-alt aside-menu-icon"></i>
+        <i class="fas fa-file aside-menu-icon"></i>
         <span>Page 1</span>
       </el-menu-item>
       <el-menu-item index="page2">
-        <i class="fas fa-exchange-alt aside-menu-icon"></i>
+        <i class="fas fa-file aside-menu-icon"></i>
         <span>Page 2</span>
       </el-menu-item>
-      <el-menu-item index="Employee">
+      <!-- <el-menu-item index="Employee">
         <i class="far fa-user aside-menu-icon"></i>
         <span>Not Work</span>
       </el-menu-item>
@@ -32,7 +32,7 @@
       <el-menu-item index="Setting">
         <i class="fas fa-cogs aside-menu-icon"></i>
         <span>Not Work</span>
-      </el-menu-item>
+      </el-menu-item> -->
       <!-- END MENU SIDEBAR-->
       </el-menu>
   </div>

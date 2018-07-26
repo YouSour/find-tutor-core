@@ -20,3 +20,11 @@ WebFont.load({
     families: ["Cairo:regular,bold", "Lato:regular,bold,italic"]
   }
 });
+
+// Local Plugin
+// import VueLodash from "/imports/ui/plugins/vue-lodash";
+// Vue.use(VueLodash);
+// import VueMoment from "/imports/ui/plugins/vue-moment";
+// Vue.use(VueMoment);
+// import VueNumeral from "/imports/ui/plugins/vue-numeral";
+// Vue.use(VueNumeral);
