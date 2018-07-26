@@ -74,7 +74,7 @@ import TableToolbar from "/imports/ui/components/TableToolbar.vue";
 import TableAction from "/imports/ui/components/TableAction.vue";
 
 import {
-  findUsers,
+  findUser,
   removeUser
   // softRemoveBranch,
   // restoreBranch,
@@ -123,13 +123,12 @@ export default {
   methods: {
     getData() {
       this.loading = true;
-      findUsers
+      findUser
         .callPromise({
           selector: {},
           options: {}
         })
         .then(result => {
-          console.log(result);
           this.tableData = result;
           this.loading = false;
         })

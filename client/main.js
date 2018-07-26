@@ -3,7 +3,7 @@ import { Meteor } from "meteor/meteor";
 import Vue from "vue";
 import routerFactory from "/imports/routes";
 
-import "../imports/plugins.js";
+import "../imports/plugins";
 
 // App layout
 import AppLayout from "/imports/ui/layouts/AppLayout.vue";
