@@ -19,11 +19,12 @@
           <el-row :gutter="10">
             <el-col :span="24">
               <el-form-item
-                label="Name"
+                label="Username"
                 prop="username"
               >
                 <el-input
                   size="large"
+                  :autofocus="true"
                   v-model="form.username"
                 ></el-input>
                   </el-form-item>
@@ -36,6 +37,7 @@
                       type="password"
                       size="large"
                       v-model="form.password"
+                      @keyup.enter.native="submitForm"
                     ></el-input>
                       </el-form-item>
             </el-col>
@@ -48,13 +50,12 @@
                 @click="submitForm"
                 class="btn"
               >
-                Log In
+                Log In&nbsp;&nbsp;&nbsp;
+                <i class="fas fa-arrow-right"></i>
                 </el-button>
             </el-col>
           </el-row>
-
           </el-form>
-
       </div>
     </div>
   </div>
@@ -62,6 +63,8 @@
 
 
 <script>
+import Notify from "/imports/ui/lib/notify";
+
 export default {
   data() {
     return {
@@ -81,8 +84,20 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           this.loading = true;
-
-          this.$store.dispatch("submitLoginForm", this.form);
+          const dataForm = this.form;
+          const username = dataForm.username,
+            password = dataForm.password;
+          // this.$store.dispatch("submitLoginForm", this.form);
+          Meteor.loginWithPassword(username, password, error => {
+            if (error) {
+              this.loading = false;
+              const message = error.reason;
+              Notify.error({ message });
+            } else {
+              const message = "Good to see you !";
+              Notify.success({ message });
+            }
+          });
         } else {
           return false;
         }

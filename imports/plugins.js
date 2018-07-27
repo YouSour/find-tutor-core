@@ -17,7 +17,11 @@ import "/imports/ui/styles/fontawesome-all";
 import WebFont from "webfontloader";
 WebFont.load({
   google: {
-    families: ["Cairo:regular,bold", "Lato:regular,bold,italic"]
+    families: [
+      "Roboto:regular,bold",
+      "Cairo:regular,bold",
+      "Lato:regular,bold,italic"
+    ]
   }
 });
 

@@ -56,12 +56,9 @@
                 <!-- Footer -->
                 <div class="footer">
                   <span>Copyright © 2018
-                    <a href="https://colorlib.com">Find Tutors</a>. All rights reserved.
+                    <a href="#">Find Tutors</a>. All rights reserved.
                   </span>
                 </div>
-                <!-- <div class="footer">
-            {{ copyright }}
-          </div> -->
             </el-main>
           </el-container>
       </el-container>
