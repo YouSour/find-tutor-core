@@ -25,6 +25,16 @@ WebFont.load({
   }
 });
 
+import VueInsProgressBar from "vue-ins-progress-bar";
+
+const options = {
+  position: "fixed",
+  show: true,
+  height: "5px"
+};
+
+Vue.use(VueInsProgressBar, options);
+
 // Local Plugin
 // import VueLodash from "/imports/ui/plugins/vue-lodash";
 // Vue.use(VueLodash);

@@ -26,6 +26,7 @@
                   size="large"
                   :autofocus="true"
                   v-model="form.username"
+                  @keyup.enter.native="submitForm"
                 ></el-input>
                   </el-form-item>
 

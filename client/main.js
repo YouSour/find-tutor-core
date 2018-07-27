@@ -8,6 +8,7 @@ import "../imports/plugins";
 // App layout
 import AppLayout from "/imports/ui/layouts/AppLayout.vue";
 import App from "/imports/ui/App.vue";
+
 // App start
 Meteor.startup(() => {
   // Start the router
