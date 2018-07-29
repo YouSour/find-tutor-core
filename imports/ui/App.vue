@@ -27,12 +27,10 @@ export default {
   },
   created() {
     this.$insProgress.start();
-
     this.$router.beforeEach((to, from, next) => {
       this.$insProgress.start();
       next();
     });
-
     this.$router.afterEach((to, from) => {
       this.$insProgress.finish();
     });

@@ -1,8 +1,39 @@
-export default [
+import NotFound from "./pages/NotFound.vue";
+import Login from "./auth/Login.vue";
+import Home from "./pages/Home.vue";
+import Users from "./pages/Users";
+import Page1 from "./pages/Page1.vue";
+import Page2 from "./pages/Page2.vue";
+
+const routes = [
+  // Not Found
   {
-    path: "/",
+    path: "*",
+    component: NotFound,
+    meta: {
+      pageTitle: "Not Found",
+      breadcrumb: {
+        title: "Not Found",
+        ignore: true
+      }
+    }
+  },
+  // Login
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+    meta: {
+      layout: "login",
+      notRequiresAuth: true,
+      pageTitle: "Login"
+    }
+  },
+  // Home
+  {
+    path: "",
     name: "home",
-    component: "/imports/ui/Home.vue",
+    component: Home,
     meta: {
       pageTitle: "Dashboard",
       breadcrumb: {
@@ -14,7 +45,7 @@ export default [
   {
     path: "/users",
     name: "users",
-    component: "/imports/ui/pages/Users.vue",
+    component: Users,
     meta: {
       pageTitle: "Users",
       breadcrumb: {
@@ -26,7 +57,7 @@ export default [
   {
     path: "/page1",
     name: "page1",
-    component: "/imports/ui/Page1.vue",
+    component: Page1,
     meta: {
       pageTitle: "Page 1",
       breadcrumb: {
@@ -51,7 +82,7 @@ export default [
   {
     path: "/page2",
     name: "page2",
-    component: "/imports/ui/Page2.vue",
+    component: Page2,
     meta: {
       pageTitle: "Page 2",
       breadcrumb: {
@@ -61,3 +92,4 @@ export default [
     }
   }
 ];
+export default routes;
