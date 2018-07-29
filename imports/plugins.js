@@ -1,5 +1,9 @@
 import Vue from "vue";
 
+// Vuex
+import Vuex from "vuex";
+Vue.use(Vuex);
+
 // Element UI
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";

@@ -1,20 +1,14 @@
-// Import the router
-import { RouterFactory, nativeScrollBehavior } from 'meteor/akryum:vue-router2'
+// // Import the router
+import VueRouter from "vue-router";
 
-// Create router instance
-const routerFactory = new RouterFactory({
-  mode: 'history',
-  scrollBehavior: nativeScrollBehavior
+//------ Module -----
+import app from "./ui/routes";
+
+const routes = app;
+
+const router = new VueRouter({
+  mode: "history",
+  routes: routes
 });
 
-// Not found
-import NotFound from '/imports/ui/NotFound.vue';
-
-RouterFactory.configure(router => {
-  router.addRoute({
-    path: '*',
-    component: NotFound,
-  });
-}, -1);
-
-export default routerFactory;
+export default router;
