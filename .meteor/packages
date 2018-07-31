@@ -65,3 +65,5 @@ zuuk:stale-session
 nathantreid:static-assets
 
 akryum:vue
+simple:rest
+simple:json-routes
