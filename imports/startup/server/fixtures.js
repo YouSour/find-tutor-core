@@ -61,19 +61,4 @@ Meteor.startup(function() {
     });
   }
 
-  // Account Type
-  // if (AccountTypes.find().count() === 0) {
-  //   const data = EJSON.parse(Assets.getText('account-type.json'))
-  //   data.forEach(doc => {
-  //     AccountTypes.insert(doc)
-  //   })
-  // }
-
-  // Chart of Account
-  // if (ChartAccounts.find().count() === 0) {
-  //   const data = EJSON.parse(Assets.getText('chart-account.json'))
-  //   data.forEach(doc => {
-  //     ChartAccounts.insert(doc)
-  //   })
-  // }
 });

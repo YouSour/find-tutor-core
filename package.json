@@ -17,16 +17,12 @@
     "moment": "^2.22.2",
     "numeral": "^2.0.6",
     "simpl-schema": "^1.5.0",
-    "vue": "^2.0.0",
+    "vue": "^2.5.16",
     "vue-data-tables": "^3.4.2",
     "vue-ins-progress-bar": "^1.0.0",
     "vue-meteor-tracker": "^1.0.3",
-    "vue-router": "^2.0.0",
+    "vue-router": "^3.0.1",
     "vuex": "^2.1.1",
     "webfontloader": "^1.6.28"
-  },
-  "devDependencies": {
-    "vue": "^2.0.0-rc.8",
-    "vue-router": "^2.0.0-rc.5"
   }
 }

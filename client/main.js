@@ -1,22 +1,18 @@
-// Libs
 import { Meteor } from "meteor/meteor";
 import Vue from "vue";
-
-// Create router
-import router from "../imports/routes";
+import VueRouter from "vue-router";
 
 import "../imports/plugins";
-
-// Store
 import store from "/imports/vuex/store";
-
-// App layout
-import AppLayout from "/imports/ui/layouts/AppLayout.vue";
 import App from "/imports/ui/App.vue";
+import routes from "../imports/ui/routes";
 
-// App start
+const router = new VueRouter({
+  mode: "history",
+  routes: routes
+});
+
 Meteor.startup(() => {
-  // Start the vue app
   new Vue({
     router,
     store,

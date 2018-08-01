@@ -60,10 +60,11 @@ cfs:filesystem
 akryum:vue-component
 akryum:vue-less
 akryum:vue-sass
+
 cultofcoders:persistent-session
 zuuk:stale-session
 nathantreid:static-assets
 
 akryum:vue
-simple:rest
+#simple:rest
 simple:json-routes

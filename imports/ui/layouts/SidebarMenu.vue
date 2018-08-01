@@ -48,10 +48,9 @@ export default {
   },
   computed: {
     linkActiveClass() {
-      const activeLink = this.$route.meta.linkActiveClass
+      return this.$route.meta.linkActiveClass
         ? this.$route.meta.linkActiveClass
         : this.$route.name;
-      return activeLink;
     }
   },
   methods: {
