@@ -1,4 +1,4 @@
-import { findUser } from "./methods";
+import { findUser } from "../api/users/methods";
 // Enable cross origin requests for all endpoints
 JsonRoutes.setResponseHeaders({
   "Cache-Control": "no-store",
