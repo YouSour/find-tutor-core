@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <div class="auth" v-if="!user">
+    <div v-loading.fullscreen.lock="isLoading">
+        <div class="auth" v-if="!user" v-show="!isLoading">
             <login/>
         </div>
-        <div v-if="user">
+        <div v-if="user" v-show="!isLoading">
             <el-container class="">
                 <!--Side-->
                 <el-aside
@@ -81,10 +81,13 @@
       login: Login
     },
     computed: {
-      fullscreenLoading() {
-        return false;
-      },
+      // loginState() {
+      //   return false;
+      // },
       user() {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1000);
         return this.$store.state.auth.user;
       },
       pageTitle() {
@@ -158,7 +161,8 @@
                   © 2018-}
                   Find Tutor
                   (V 1.0)
-                  `
+                  `,
+        isLoading: true
       };
     },
     methods: {

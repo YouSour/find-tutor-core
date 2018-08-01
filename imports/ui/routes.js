@@ -1,15 +1,8 @@
-import NotFound from "./pages/NotFound.vue";
-import Login from "./auth/Login.vue";
-import Home from "./pages/Home.vue";
-import Users from "./pages/Users";
-import Page1 from "./pages/Page1.vue";
-import Page2 from "./pages/Page2.vue";
-
 const routes = [
   // Not Found
   {
     path: "*",
-    component: NotFound,
+    component: () => import('./pages/NotFound'),
     meta: {
       pageTitle: "Not Found",
       breadcrumb: {
@@ -22,7 +15,7 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: Login,
+    component: () => import('./auth/Login'),
     meta: {
       layout: "login",
       notRequiresAuth: true,
@@ -33,7 +26,7 @@ const routes = [
   {
     path: "",
     name: "home",
-    component: Home,
+    component: () => import('./pages/Home'),
     meta: {
       pageTitle: "Dashboard",
       breadcrumb: {
@@ -45,7 +38,7 @@ const routes = [
   {
     path: "/users",
     name: "users",
-    component: Users,
+    component: () => import('./pages/Users'),
     meta: {
       pageTitle: "Users",
       breadcrumb: {
@@ -57,7 +50,7 @@ const routes = [
   {
     path: "/page1",
     name: "page1",
-    component: Page1,
+    component: () => import('./pages/Page1'),
     meta: {
       pageTitle: "Page 1",
       breadcrumb: {
@@ -82,7 +75,7 @@ const routes = [
   {
     path: "/page2",
     name: "page2",
-    component: Page2,
+    component: () => import('./pages/Page2'),
     meta: {
       pageTitle: "Page 2",
       breadcrumb: {
