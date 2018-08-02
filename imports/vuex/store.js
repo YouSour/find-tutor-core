@@ -1,4 +1,3 @@
-import Vue from "vue";
 import Vuex from "vuex";
 import authModule from "/imports/vuex/auth.js";
 

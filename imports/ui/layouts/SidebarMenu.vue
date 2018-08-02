@@ -1,66 +1,50 @@
 <template>
-  <div class="app-sidebar">
-    <el-menu
-      :default-active="linkActiveClass"
-      text-color="#fff"
-      @select="handleMenuSelect"
-    >
-      <el-menu-item index="home">
-        <i class="fa fa-tachometer-alt aside-menu-icon"></i>
-        <span>Dashboard</span>
-      </el-menu-item>
-      <el-menu-item index="users">
-        <i class="fa fa-user aside-menu-icon"></i>
-        <span>Users</span>
-      </el-menu-item>
-      <el-menu-item index="page1">
-        <i class="fas fa-file aside-menu-icon"></i>
-        <span>Page 1</span>
-      </el-menu-item>
-      <el-menu-item index="page2">
-        <i class="fas fa-file aside-menu-icon"></i>
-        <span>Page 2</span>
-      </el-menu-item>
-      <!-- <el-menu-item index="Employee">
-        <i class="far fa-user aside-menu-icon"></i>
-        <span>Not Work</span>
-      </el-menu-item>
-      <el-menu-item index="Report">
-        <i class="fas fa-print aside-menu-icon"></i>
-        <span>Not Work</span>
-      </el-menu-item>
-      <el-menu-item index="Setting">
-        <i class="fas fa-cogs aside-menu-icon"></i>
-        <span>Not Work</span>
-      </el-menu-item> -->
-      <!-- END MENU SIDEBAR-->
-      </el-menu>
-  </div>
+    <div class="app-sidebar">
+        <el-menu
+                :default-active="linkActiveClass"
+                text-color="#fff"
+                @select="handleMenuSelect"
+                v-for="(item, index) in routes" :key="index"
+        >
+            <el-menu-item :index="item.name" v-show="item.sideBar()">
+                <i :class="item.icon +' aside-menu-icon'"></i>
+                <span>{{item.name}}</span>
+            </el-menu-item>
+        </el-menu>
+    </div>
 </template>
 <script>
-export default {
-  name: "SidebarMenu",
-  props: {
-    activeMenu: {
-      type: String,
-      default: ""
+  import routes from '../../../client/routes';
+
+  export default {
+    name: "SidebarMenu",
+    // props: {
+    //   activeMenu: {
+    //     type: String,
+    //     default: "home"
+    //   }
+    // },
+    data() {
+      return {
+        users: this.$store.state.auth.user,
+        routes
+      }
+    },
+    computed: {
+      linkActiveClass() {
+        return this.$route.meta.linkActiveClass
+          ? this.$route.meta.linkActiveClass
+          : this.$route.name;
+      }
+    },
+    methods: {
+      handleMenuSelect(name) {
+        this.$router.push({name});
+      }
     }
-  },
-  computed: {
-    linkActiveClass() {
-      return this.$route.meta.linkActiveClass
-        ? this.$route.meta.linkActiveClass
-        : this.$route.name;
-    }
-  },
-  methods: {
-    handleMenuSelect(name) {
-      this.$router.push({ name });
-    }
-  }
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-@import "~imports/ui/styles/aside-menu.scss";
+    @import "~imports/ui/styles/aside-menu.scss";
 </style>

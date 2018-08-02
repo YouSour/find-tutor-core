@@ -81,9 +81,6 @@
       login: Login
     },
     computed: {
-      // loginState() {
-      //   return false;
-      // },
       user() {
         setTimeout(() => {
           this.isLoading = false;

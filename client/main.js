@@ -5,7 +5,7 @@ import VueRouter from "vue-router";
 import "../imports/plugins";
 import store from "/imports/vuex/store";
 import App from "/imports/ui/App.vue";
-import routes from "../imports/ui/routes";
+import routes from "./routes";
 
 const router = new VueRouter({
   mode: "history",

@@ -6,7 +6,9 @@
     "profile": {
       "fullName": "Super"
     },
-    "roles": "super"
+    "roles": [
+      "super"
+    ]
   },
   {
     "username": "admin",
@@ -15,6 +17,8 @@
     "profile": {
       "fullName": "Admin"
     },
-    "roles": "admin"
+    "roles": [
+      "admin"
+    ]
   }
 ]
