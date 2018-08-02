@@ -9,7 +9,6 @@ Meteor.startup(function() {
    */
   if (Meteor.isDevelopment) {
   }
-
   /**
    * Production
    */
@@ -56,7 +55,7 @@ Meteor.startup(function() {
           password,
           profile
         });
-        // Roles.addUsersToRoles(userId, roles)
+        Roles.addUsersToRoles(userId, roles)
       }
     });
   }
