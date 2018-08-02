@@ -7,14 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow: auto;
 }
-/* Element UI */
-@font-face {
-  font-family: element-icons;
-  src: url("/fonts-element/element-icons.woff?t=1508313898411") format("woff"),
-    url("/fonts-element/element-icons.ttf?t=1508313898411") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
 /* ----- Page Wrapper----- */
 /*Override Grid Bootstrap*/
 @media (min-width: 1200px) {
