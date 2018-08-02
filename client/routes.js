@@ -8,11 +8,9 @@ const requiredUserFn = (to, from, next) => {
 };
 
 const hasPermission = (routeName) => {
-  if (!!store.state.auth.user.roles) {
-    let isPermitted = !!store.state.auth.user.roles.find((element) => {
-      return element === 'super' || element === 'admin';
-    });
-
+  let isPermitted = false;
+  const {roles} = store.state.auth.user;
+  if (!!roles) {
     switch (routeName) {
       case 'login':
         isPermitted = false;
@@ -21,13 +19,16 @@ const hasPermission = (routeName) => {
         isPermitted = false;
         break;
       case 'users':
-        isPermitted = store.state.auth.user.roles.includes('super');
+        isPermitted = !!roles.find((element) => {
+          return element === 'super' || element === 'admin';
+        });
+        break;
+      default:
+        isPermitted = true;
         break;
     }
-
-    return isPermitted;
   }
-  return false;
+  return isPermitted;
 };
 
 const routes = [
