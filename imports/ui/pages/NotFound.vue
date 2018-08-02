@@ -1,15 +1,16 @@
 <template>
-<div class="not-found">
-  <div class="banner">
-    <img src="/img/droids.jpg" />
+  <div class="not-found">
+    <div class="banner">
+      <img src="/img/404.gif" />
+    </div>
+    <div class="hero">
+      Error 404 !
+    </div>
+    <div>
+      This is not the page you are looking for.
+      <router-link :to="{name:'home'}">Return home</router-link>
+    </div>
   </div>
-  <div class="hero">
-    Not Found
-  </div>
-  <div>
-    This is not the page you are looking for. <router-link :to="{name:'home'}">Return home</router-link>
-  </div>
-</div>
 </template>
 
 <style scoped>
@@ -23,7 +24,7 @@
   margin: 12px;
 }
 .not-found .banner img {
-  max-width: 100%;
+  max-width: 20%;
   border-radius: 5px;
 }
 </style>
