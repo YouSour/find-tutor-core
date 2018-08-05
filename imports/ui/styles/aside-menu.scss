@@ -23,16 +23,12 @@
     background-color: #122f3b !important;
   }
 
-  .el-menu-item {
-    // font-weight: 600;
+  .el-menu-item[data-v-07205fcc] {
     text-transform: uppercase;
-    font-size: 16px;
-    // padding: 15px 0;
-    // margin-left: 15px !important;
-    // margin-right: 15px !important;
-    // border-radius: 3px;
-    // margin-top: 5px;
-    // padding-left: 20px !important;
+    font-size: 15px;
+    margin: 10px 15px 0;
+    padding: 0 15px !important;
+    border-radius: 3px;
   }
 
   .el-menu-item:focus,
@@ -40,19 +36,20 @@
   .el-menu-item:active {
     opacity: 1;
     color: #ffffff;
-    background: #07a7e3;
-    background: -moz-linear-gradient(-45deg, #07a7e3 0%, #32dac3 100%);
-    background: -webkit-linear-gradient(-45deg, #07a7e3 0%, #32dac3 100%);
-    background: linear-gradient(135deg, #07a7e3 0%, #32dac3 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$qp-color-1, endColorstr=$qp-color-2,GradientType=1 );
-    -webkit-transition: opacity 0.2s ease-out;
-    -moz-transition: opacity 0.2s ease-out;
-    -o-transition: opacity 0.2s ease-out;
-    transition: opacity 0.2s ease-out;
-    -webkit-transition: width 0.3s ease-in-out;
-    -moz-transition: width 0.3s ease-in-out;
-    -o-transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out;
+    background: hsla(0, 0%, 100%, 0.23);
+    // background: #07a7e3;
+    // background: -moz-linear-gradient(-45deg, #07a7e3 0%, #32dac3 100%);
+    // background: -webkit-linear-gradient(-45deg, #07a7e3 0%, #32dac3 100%);
+    // background: linear-gradient(135deg, #07a7e3 0%, #32dac3 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$qp-color-1, endColorstr=$qp-color-2,GradientType=1 );
+    // -webkit-transition: opacity 0.2s ease-out;
+    // -moz-transition: opacity 0.2s ease-out;
+    // -o-transition: opacity 0.2s ease-out;
+    // transition: opacity 0.2s ease-out;
+    // -webkit-transition: width 0.3s ease-in-out;
+    // -moz-transition: width 0.3s ease-in-out;
+    // -o-transition: width 0.3s ease-in-out;
+    // transition: width 0.3s ease-in-out;
     i {
       color: #ffffff;
     }
@@ -98,8 +95,8 @@
 
   .el-menu-item,
   .el-submenu__title {
-    // height: 45px !important;
-    // line-height: 45px !important;
+    height: 50px !important;
+    line-height: 50px !important;
   }
   .el-submenu__title {
     // font-weight: 600;
