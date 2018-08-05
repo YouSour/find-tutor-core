@@ -66,116 +66,122 @@
 </template>
 
 <script>
-  import _ from "lodash";
-  import SidebarMenu from "/imports/ui/layouts/SidebarMenu.vue";
-  import HeaderMenu from "/imports/ui/layouts/Header.vue";
+import _ from "lodash";
+import SidebarMenu from "/imports/ui/layouts/SidebarMenu.vue";
+import HeaderMenu from "/imports/ui/layouts/Header.vue";
 
-  import BreadcrumsMixin from "../mixins/breadcrumbs";
+import BreadcrumsMixin from "../mixins/breadcrumbs";
 
-  import Login from "/imports/ui/auth/Login.vue";
+import Login from "/imports/ui/auth/Login.vue";
 
-  export default {
-    components: {
-      SidebarMenu,
-      HeaderMenu,
-      login: Login
+export default {
+  components: {
+    SidebarMenu,
+    HeaderMenu,
+    login: Login
+  },
+  computed: {
+    user() {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1000);
+      return this.$store.state.auth.user;
     },
-    computed: {
-      user() {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1000);
-        return this.$store.state.auth.user;
-      },
-      pageTitle() {
-        let title = "No TiTle";
-        title = this.$route.meta.pageTitle
-          ? this.$route.meta.pageTitle
-          : this.$route.name ? _.startCase(this.$route.name) : title;
+    pageTitle() {
+      let title = "No TiTle";
+      title = this.$route.meta.pageTitle
+        ? this.$route.meta.pageTitle
+        : this.$route.name ? _.startCase(this.$route.name) : title;
 
-        return title;
-      },
-      breadcrumbs() {
-        let crumbs = [];
+      return title;
+    },
+    breadcrumbs() {
+      let crumbs = [];
 
-        _.forEach(this.$route.matched, ({meta, path, name}) => {
-          const crumb = meta.breadcrumb;
-          if (crumb) {
-            // Use `name` for route
-            if (name) {
-              crumb.to = {name: name};
-              // Check params
-              if (crumb.params) {
-                crumb.to.params = _.pickBy(this.$route.params, (val, key) => {
-                  return _.includes(crumb.params, key);
-                });
-              }
-              // Check query
-              if (crumb.query) {
-                crumb.to.query = _.pickBy(this.$route.query, (val, key) => {
-                  return _.includes(crumb.query, key);
-                });
-              }
-            } else {
-              // Use `path` for route
-              // Check path is empty
-              path = path ? path : "/";
-              crumb.to = path;
-              // Check params
-              if (crumb.params) {
-                // Reduce crumb.to
-                crumb.to = _.reduce(
-                  crumb.params,
-                  (result, val) => {
-                    result = _.replace(
-                      result ? result : path,
-                      val,
-                      this.$route.params[val]
-                    );
-                  },
-                  ""
-                );
-              }
-              // Check query
-              if (crumb.query) {
-                crumb.to.query = _.pickBy(this.$route.query, (val, key) => {
-                  return _.includes(crumb.query, key);
-                });
-              }
+      _.forEach(this.$route.matched, ({ meta, path, name }) => {
+        const crumb = meta.breadcrumb;
+        if (crumb) {
+          // Use `name` for route
+          if (name) {
+            crumb.to = { name: name };
+            // Check params
+            if (crumb.params) {
+              crumb.to.params = _.pickBy(this.$route.params, (val, key) => {
+                return _.includes(crumb.params, key);
+              });
             }
-
-            crumbs.push(crumb);
+            // Check query
+            if (crumb.query) {
+              crumb.to.query = _.pickBy(this.$route.query, (val, key) => {
+                return _.includes(crumb.query, key);
+              });
+            }
+          } else {
+            // Use `path` for route
+            // Check path is empty
+            path = path ? path : "/";
+            crumb.to = path;
+            // Check params
+            if (crumb.params) {
+              // Reduce crumb.to
+              crumb.to = _.reduce(
+                crumb.params,
+                (result, val) => {
+                  result = _.replace(
+                    result ? result : path,
+                    val,
+                    this.$route.params[val]
+                  );
+                },
+                ""
+              );
+            }
+            // Check query
+            if (crumb.query) {
+              crumb.to.query = _.pickBy(this.$route.query, (val, key) => {
+                return _.includes(crumb.query, key);
+              });
+            }
           }
-        });
 
-        return crumbs;
-      }
-    },
-    mixins: [BreadcrumsMixin],
-    data() {
-      return {
-        copyright: `
+          crumbs.push(crumb);
+        }
+      });
+
+      return crumbs;
+    }
+  },
+  mixins: [BreadcrumsMixin],
+  data() {
+    return {
+      copyright: `
                   © 2018-}
                   Find Tutor
                   (V 1.0)
                   `,
-        isLoading: true
-      };
-    },
-    methods: {
-      handleHomeSelect(name) {
-        this.$router.push({name});
-      }
+      isLoading: true
+    };
+  },
+  methods: {
+    handleHomeSelect(name) {
+      this.$router.push({ name });
     }
-  };
+  }
+};
 </script>
 <style lang="scss" scoped>
-    @import "~imports/ui/styles/main.scss";
-    @import "~imports/ui/styles/aside-menu.scss";
-    @import "~imports/ui/styles/header-menu.scss";
+@import "~imports/ui/styles/main.scss";
+@import "~imports/ui/styles/aside-menu.scss";
+@import "~imports/ui/styles/header-menu.scss";
 
-    .auth {
-        background-color: #e5e5e5;
-        height: 100vh;
-    }
+.content {
+    padding: 14px 20px 0px;
+}
+.auth {
+  background-color: #e5e5e5;
+  height: 100vh;
+}
+a[data-v-f0ebd048]:-webkit-any-link {
+  color: #13b8da;
+}
 </style>

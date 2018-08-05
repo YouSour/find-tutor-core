@@ -24,8 +24,8 @@ body {
   height: 100vh;
 }
 .login-wrap {
-  max-width: 540px;
-  padding-top: 8vh;
+  max-width: 22%;
+  padding-top: 20vh;
   margin: 0 auto;
 }
 
@@ -38,5 +38,5 @@ body {
   padding: 30px 30px 20px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
