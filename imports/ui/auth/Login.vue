@@ -111,6 +111,9 @@ export default {
 };
 </script>
 <style>
+.vertical-offset-100 {
+  padding-top: 100px;
+}
 .btn {
   width: 100% !important;
   margin-top: 10px !important;
