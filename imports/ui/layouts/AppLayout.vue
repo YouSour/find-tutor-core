@@ -1,67 +1,74 @@
 <template>
-    <div v-loading.fullscreen.lock="isLoading">
-        <div class="auth" v-if="!user" v-show="!isLoading">
-            <login/>
+  <div v-loading.fullscreen.lock="isLoading">
+    <div
+      class="auth"
+      v-if="!user"
+      v-show="!isLoading"
+    >
+      <login/>
+  </div>
+  <div
+    v-if="user"
+    v-show="!isLoading"
+  >
+    <el-container class="">
+      <!--Side-->
+      <el-aside
+        width="260px"
+        class="aside"
+      >
+        <div class="logo">
+          <img
+            src="/images/meteor.png"
+            class="logo-img"
+          >
         </div>
-        <div v-if="user" v-show="!isLoading">
-            <el-container class="">
-                <!--Side-->
-                <el-aside
-                        width="260px"
-                        class="aside"
+        <!-- Menu -->
+        <sidebar-menu></sidebar-menu>
+        </el-aside>
+        <el-container>
+          <!--Header-->
+          <el-header class="header header-menu-layout">
+            <span class="page-title">{{ pageTitle }}</span>
+            <!--Left-->
+            <span class="menu-left">
+            </span>
+            <!--Right-->
+            <span class="menu-right">
+              <header-menu></header-menu>
+            </span>
+          </el-header>
+          <el-main class="content main-content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+              <el-breadcrumb separator="/">
+                <el-breadcrumb-item
+                  v-for="(bc, index) in breadcrumbMixin"
+                  :key="index"
+                  :to="bc.route"
                 >
-                    <div class="logo">
-                        <img
-                                src="/img/meteor.png"
-                                class="logo-img"
-                        >
-                    </div>
-                    <!-- Menu -->
-                    <sidebar-menu></sidebar-menu>
-                </el-aside>
-                <el-container>
-                    <!--Header-->
-                    <el-header class="header header-menu-layout">
-                        <span class="page-title">{{ pageTitle }}</span>
-                        <!--Left-->
-                        <span class="menu-left">
-              </span>
-                        <!--Right-->
-                        <span class="menu-right">
-                <header-menu></header-menu>
-              </span>
-                    </el-header>
-                    <el-main class="content main-content">
-                        <!-- Breadcrumb -->
-                        <div class="breadcrumb">
-                            <el-breadcrumb separator="/">
-                                <el-breadcrumb-item
-                                        v-for="(bc, index) in breadcrumbMixin"
-                                        :key="index"
-                                        :to="bc.route"
-                                >
-                      <span v-if="bc.icon">
-                        <i :class="bc.icon"></i>
-                      </span>
-                                    {{ bc.title }}
-                                </el-breadcrumb-item>
-                            </el-breadcrumb>
-                        </div>
-                        <!-- Content -->
-                        <div class="router-view">
-                            <!-- route outlet -->
-                            <router-view></router-view>
-                        </div>
-                        <!-- Footer -->
-                        <div class="footer">
-                  <span>Copyright © 2018
-                    <a href="#">Find Tutors</a>. All rights reserved.
+                  <span v-if="bc.icon">
+                    <i :class="bc.icon"></i>
                   </span>
-                        </div>
-                    </el-main>
-                </el-container>
-            </el-container>
-        </div>
+                  {{ bc.title }}
+                  </el-breadcrumb-item>
+              </el-breadcrumb>
+            </div>
+            <!-- Content -->
+            <div class="router-view">
+              <!-- route outlet -->
+              <router-view></router-view>
+            </div>
+            <!-- Footer -->
+            <div class="footer">
+              <span>Copyright © 2018
+                <a href="#">Find Tutors</a>. All rights reserved.
+              </span>
+            </div>
+          </el-main>
+        </el-container>
+    </el-container>
+    </div>
     </div>
 </template>
 
@@ -175,10 +182,13 @@ export default {
 @import "~imports/ui/styles/header-menu.scss";
 
 .content {
-    padding: 14px 20px 0px;
+  padding: 14px 20px 0px;
 }
 .auth {
-  background-color: #e5e5e5;
+  background: url("/images/back.png");
+  background-color: #444;
+  background: url("/images/pinlayer2.png"), url("/images/pinlayer1.png"),
+    url("/images/back.png");
   height: 100vh;
 }
 a[data-v-f0ebd048]:-webkit-any-link {

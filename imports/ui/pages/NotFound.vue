@@ -1,7 +1,7 @@
 <template>
   <div class="not-found">
     <div class="banner">
-      <img src="/img/404.gif" />
+      <img src="/images/404.gif" />
     </div>
     <div class="hero">
       Error 404 !
@@ -26,5 +26,8 @@
 .not-found .banner img {
   max-width: 20%;
   border-radius: 5px;
+}
+.router-link-active {
+  color: #13b8da !important;
 }
 </style>
