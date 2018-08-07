@@ -19,7 +19,7 @@
       >
         <div class="logo">
           <img
-            src="/images/meteor.png"
+            src="/images/logo1.png"
             class="logo-img"
           >
         </div>

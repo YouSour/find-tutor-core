@@ -1,6 +1,7 @@
 /* Aside */
 .aside {
-  background-color: #122f3b !important;
+  // background-color: #122f3b !important;
+  background-image: url("images/sidebar.png");
 
   .logo {
     // height: 60px;
@@ -11,7 +12,6 @@
     color: white;
 
     .logo-img {
-      width: 80px;
       padding: 12px 0px 3px;
       cursor: pointer;
     }
@@ -20,7 +20,7 @@
 .app-sidebar {
   .el-menu {
     border-right: none !important;
-    background-color: #122f3b !important;
+    background-color: transparent !important;
   }
 
   .el-menu-item[data-v-07205fcc] {
