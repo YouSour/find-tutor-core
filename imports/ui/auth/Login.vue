@@ -5,7 +5,7 @@
         <a href="#">
           <img
             src="images/icon/logo.png"
-            alt="CoolAdmin"
+            alt="FindTutor"
           >
         </a>
       </div>
