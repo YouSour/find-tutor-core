@@ -76,7 +76,6 @@
 import _ from "lodash";
 import SidebarMenu from "/imports/ui/layouts/SidebarMenu.vue";
 import HeaderMenu from "/imports/ui/layouts/Header.vue";
-
 import BreadcrumsMixin from "../mixins/breadcrumbs";
 
 import Login from "/imports/ui/auth/Login.vue";
@@ -175,6 +174,26 @@ export default {
     }
   }
 };
+$(document).mousemove(function(e) {
+  TweenLite.to($(".auth"), 0.5, {
+    css: {
+      backgroundPosition:
+        "" +
+        parseInt(event.pageX / 8) +
+        "px " +
+        parseInt(event.pageY / "12") +
+        "px, " +
+        parseInt(event.pageX / "15") +
+        "px " +
+        parseInt(event.pageY / "15") +
+        "px, " +
+        parseInt(event.pageX / "30") +
+        "px " +
+        parseInt(event.pageY / "30") +
+        "px"
+    }
+  });
+});
 </script>
 <style lang="scss" scoped>
 @import "~imports/ui/styles/main.scss";
