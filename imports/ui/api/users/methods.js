@@ -38,7 +38,7 @@ export const findOneUser = new ValidatedMethod({
   }).validator(),
   run({ _id }) {
     if (Meteor.isServer) {
-      return Meteor.users.findOne({ _id });
+      return Meteor.users.findOne(_id);
     }
   }
 });
@@ -89,7 +89,7 @@ export const updateUser = new ValidatedMethod({
     if (Meteor.isServer) {
       // Check role
       // userIsInRole(["super", "admin"]);
-
+      console.log(user);
       try {
         // Update user
         Meteor.users.update(

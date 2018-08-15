@@ -1,26 +1,26 @@
-import store from '../imports/vuex/store';
+import store from "../imports/vuex/store";
 
 const requiredUserFn = (to, from, next) => {
   if (store.state.auth.user) {
     return next();
   }
-  return next('/');
+  return next("/");
 };
 
-const hasPermission = (routeName) => {
+const hasPermission = routeName => {
   let isPermitted = false;
-  const {roles} = store.state.auth.user;
+  const { roles } = store.state.auth.user;
   if (!!roles) {
     switch (routeName) {
-      case 'login':
+      case "login":
         isPermitted = false;
         break;
-      case 'notFound':
+      case "notFound":
         isPermitted = false;
         break;
-      case 'users':
-        isPermitted = !!roles.find((element) => {
-          return element === 'super' || element === 'admin';
+      case "users":
+        isPermitted = !!roles.find(element => {
+          return element === "super" || element === "admin";
         });
         break;
       default:
@@ -36,7 +36,7 @@ const routes = [
   {
     path: "*",
     name: "notFound",
-    component: () => import('../imports/ui/pages/NotFound'),
+    component: () => import("../imports/ui/pages/NotFound"),
     meta: {
       pageTitle: "Not Found",
       breadcrumb: {
@@ -46,13 +46,13 @@ const routes = [
     },
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("notFound"),
-    icon: 'fa fa-tachometer-alt'
+    icon: "fa fa-tachometer-alt"
   },
   // Login
   {
     path: "/login",
     name: "login",
-    component: () => import('../imports/ui/auth/Login'),
+    component: () => import("../imports/ui/auth/Login"),
     meta: {
       layout: "login",
       notRequiresAuth: true,
@@ -60,13 +60,13 @@ const routes = [
     },
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("login"),
-    icon: 'fa fa-tachometer-alt'
+    icon: "fa fa-tachometer-alt"
   },
   // Home
   {
     path: "",
     name: "home",
-    component: () => import('../imports/ui/pages/Home'),
+    component: () => import("../imports/ui/pages/Home"),
     meta: {
       pageTitle: "Dashboard",
       breadcrumb: {
@@ -76,12 +76,12 @@ const routes = [
     },
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("home"),
-    icon: 'fa fa-tachometer-alt'
+    icon: "fa fa-tachometer-alt"
   },
   {
     path: "/users",
     name: "users",
-    component: () => import('../imports/ui/pages/Users'),
+    component: () => import("../imports/ui/pages/Users"),
     meta: {
       pageTitle: "Users",
       breadcrumb: {
@@ -91,12 +91,12 @@ const routes = [
     },
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("users"),
-    icon: 'fa fa-tachometer-alt'
+    icon: "fa fa-tachometer-alt"
   },
   {
     path: "/page1",
     name: "page1",
-    component: () => import('../imports/ui/pages/Page1'),
+    component: () => import("../imports/ui/pages/Page1"),
     meta: {
       pageTitle: "Page 1",
       breadcrumb: {
@@ -106,7 +106,7 @@ const routes = [
     },
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("page1"),
-    icon: 'fa fa-tachometer-alt'
+    icon: "fa fa-tachometer-alt"
     // Nested routes
     // children: [
     //   {
@@ -124,7 +124,7 @@ const routes = [
   {
     path: "/page2",
     name: "page2",
-    component: () => import('../imports/ui/pages/Page2'),
+    component: () => import("../imports/ui/pages/Page2"),
     meta: {
       pageTitle: "Page 2",
       breadcrumb: {
@@ -134,7 +134,37 @@ const routes = [
     },
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("page2"),
-    icon: 'fa fa-tachometer-alt'
+    icon: "fa fa-tachometer-alt"
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: () => import("../imports/ui/pages/Profile.vue"),
+    meta: {
+      pageTitle: "Profile",
+      breadcrumb: {
+        title: "Profile",
+        parent: "home"
+      }
+    },
+    // beforeEnter: requiredUserFn,
+    sideBar: () => hasPermission("profile"),
+    icon: "fa fa-tachometer-alt"
+  },
+  {
+    path: "/setting",
+    name: "setting",
+    component: () => import("../imports/ui/pages/Setting.vue"),
+    meta: {
+      pageTitle: "Setting",
+      breadcrumb: {
+        title: "Setting",
+        parent: "home"
+      }
+    },
+    // beforeEnter: requiredUserFn,
+    sideBar: () => hasPermission("Setting"),
+    icon: "fa fa-tachometer-alt"
   }
 ];
 export default routes;
