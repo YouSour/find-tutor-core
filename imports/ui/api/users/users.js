@@ -53,13 +53,16 @@ export const UserUpdateSchema = new SimpleSchema({
   },
   password: {
     type: String,
-    min: 6
+    min: 6,
+    optional: true
   },
   type: {
-    type: String
+    type: String,
+    optional: true
   },
   status: {
-    type: String
+    type: String,
+    optional: true
   }
   // branchPermissions: {
   //   type: Array

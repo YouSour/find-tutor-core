@@ -46,7 +46,6 @@
             </div>
             <div class="content">
               <div class="name">
-                <!-- Heng YouSour -->
                 {{user.username}}
               </div>
               <span class="email">{{user.emails[0].address}}</span>
@@ -56,7 +55,7 @@
           <el-dropdown-item command="profile">
             <i class="fa fa-user-circle"></i> Profile
           </el-dropdown-item>
-          <el-dropdown-item command="lang">
+          <el-dropdown-item command="setting">
             <i class="fa fa-cog"></i> Setting
           </el-dropdown-item>
           <el-dropdown-item
@@ -83,6 +82,12 @@ export default {
     handleCommand(command) {
       if (command == "logout") {
         this.$store.dispatch("logout");
+      }
+      if (command == "profile") {
+        this.$router.push("profile");
+      }
+      if (command == "setting") {
+        this.$router.push("setting");
       }
     }
   }
