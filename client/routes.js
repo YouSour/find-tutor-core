@@ -23,6 +23,12 @@ const hasPermission = routeName => {
           return element === "super" || element === "admin";
         });
         break;
+      case "profile":
+        isPermitted = false;
+        break;
+      case "setting":
+        isPermitted = false;
+        break;
       default:
         isPermitted = true;
         break;
@@ -163,7 +169,7 @@ const routes = [
       }
     },
     // beforeEnter: requiredUserFn,
-    sideBar: () => hasPermission("Setting"),
+    sideBar: () => hasPermission("setting"),
     icon: "fa fa-tachometer-alt"
   }
 ];
