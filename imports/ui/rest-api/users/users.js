@@ -1,4 +1,4 @@
-import { findUser } from "../api/users/methods";
+import { findUserRestApi } from "../../rest-api/users/methods";
 // Enable cross origin requests for all endpoints
 JsonRoutes.setResponseHeaders({
   "Cache-Control": "no-store",
@@ -9,7 +9,7 @@ JsonRoutes.setResponseHeaders({
     "Content-Type, Authorization, X-Requested-With"
 });
 let users = [];
-findUser
+findUserRestApi
   .callPromise({
     selector: {},
     options: {}
@@ -18,7 +18,7 @@ findUser
     users = result;
   })
   .catch(error => {
-    Notify.error({ message: error });
+    console.log(error);
   });
 
 JsonRoutes.add("get", "/users-rest-api", function(req, res, next) {
