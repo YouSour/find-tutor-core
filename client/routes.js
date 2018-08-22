@@ -171,6 +171,21 @@ const routes = [
     // beforeEnter: requiredUserFn,
     sideBar: () => hasPermission("setting"),
     icon: "fa fa-tachometer-alt"
+  },
+  {
+    path: "/subject",
+    name: "subject",
+    component: () => import("../imports/ui/pages/Subject.vue"),
+    meta: {
+      pageTitle: "Subject",
+      breadcrumb: {
+        title: "Subject",
+        parent: "home"
+      }
+    },
+    // beforeEnter: requiredUserFn,
+    sideBar: () => hasPermission("subject"),
+    icon: "fa fa-tachometer-alt"
   }
 ];
 export default routes;

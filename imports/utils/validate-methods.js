@@ -9,6 +9,10 @@ import SimpleSchema from "simpl-schema";
 import rateLimit from "./rate-limit";
 // import { userIsInRole, throwError } from "./security";
 
+//Collection
+
+import Subject from "../ui/rest-api/subjects/collection";
+
 // Use exist
 export const validateUserExist = new ValidatedMethod({
   name: "app.validateUserExist",
@@ -41,6 +45,23 @@ export const validateUserPassword = new ValidatedMethod({
       let result = Accounts._checkPassword(user, passwordOpts);
 
       return result;
+    }
+  }
+});
+
+export const validateKhNameExist = new ValidatedMethod({
+  name: "app.validateKhNameExist",
+  mixins: [CallPromiseMixin],
+  validate: new SimpleSchema({
+    selector: {
+      type: Object,
+      blackbox: true,
+      optional: true
+    }
+  }).validator(),
+  run({ selector }) {
+    if (Meteor.isServer) {
+      return Subject.findOne(selector);
     }
   }
 });
