@@ -29,7 +29,6 @@ Meteor.startup(() => {
   JsonRoutes.add("get", "/find_subject/:params", function (req, res, next) {
     res.charset = "utf-8";
     const params = req.params.params;
-    console.log(params);
 
     JsonRoutes.sendResult(res, {
       data: params ? SUBJECT.findOne(params) : SUBJECT.find()

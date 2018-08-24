@@ -17,6 +17,6 @@ export class SUBJECT {
   }
 
   static findOne(params) {
-    return Subject.find(JSON.parse(params)).fetch();
+    return Subject.find({_id: params.id}).fetch();
   }
 }
