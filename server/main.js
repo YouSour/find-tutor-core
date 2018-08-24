@@ -4,7 +4,6 @@ import './config/account';
 // import './publication';
 import "../imports/startup/server";
 
-import {SUBJECT} from './methods/subject';
 
 Meteor.startup(() => {
 // Enable cross origin requests for all endpoints
@@ -26,12 +25,14 @@ Meteor.startup(() => {
   // }
 
 
-  JsonRoutes.add("get", "/find_subject/:params", function (req, res, next) {
-    res.charset = "utf-8";
-    const params = req.params.params;
+  // JsonRoutes.add("get", "/find_subject/:params", function (req, res, next) {
+  //   res.charset = "utf-8";
+  //   const params = req.params.params;
+  //
+  //   JsonRoutes.sendResult(res, {
+  //     data: params ? SUBJECT.findOne(params) : SUBJECT.find()
+  //   });
+  // });
 
-    JsonRoutes.sendResult(res, {
-      data: params ? SUBJECT.findOne(params) : SUBJECT.find()
-    });
-  });
+
 });

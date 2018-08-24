@@ -22,7 +22,8 @@ export const findUserRestApi = new ValidatedMethod({
   }).validator(),
   run({ selector, options }) {
     if (Meteor.isServer) {
-      return Meteor.users.find(selector, options).fetch();
+      // return Meteor.users.find(selector, options).fetch();
+      return USER.findOne(selector, options);
     }
   }
 });

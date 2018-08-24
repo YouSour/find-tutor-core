@@ -1,6 +1,6 @@
-import { Meteor } from "meteor/meteor";
-import { ValidatedMethod } from "meteor/mdg:validated-method";
-import { CallPromiseMixin } from "meteor/didericis:callpromise-mixin";
+import {Meteor} from "meteor/meteor";
+import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import SimpleSchema from "simpl-schema";
 import _ from "lodash";
 
@@ -26,12 +26,12 @@ export const findSubject = new ValidatedMethod({
       optional: true
     }
   }).validator(),
-  run({ selector, options }) {
+  run({selector, options}) {
     if (Meteor.isServer) {
       selector = selector || {};
       options = options || {};
 
-      return Subject.find(selector, options).fetch();
+      return SUBJECT.findSubject(selector, options);
     }
   }
 });
@@ -52,14 +52,14 @@ export const findOneSubject = new ValidatedMethod({
       optional: true
     }
   }).validator(),
-  run({ selector, options }) {
+  run({selector, options}) {
     if (Meteor.isServer) {
       console.log(selector);
       Meteor._sleepForMs(100);
       selector = selector || {};
       options = options || {};
 
-      return Subject.findOne(selector, options);
+      return SUBJECT.findOne(selector, options)
     }
   }
 });
@@ -94,8 +94,8 @@ export const insertSubject = new ValidatedMethod({
       } catch (error) {
         // Decrement seq
         getNextSeq({
-          filter: { _id: "subject_restApi" },
-          opts: { seq: -1 }
+          filter: {_id: "subject_restApi"},
+          opts: {seq: -1}
         });
       }
     }
@@ -116,7 +116,7 @@ export const updateSubject = new ValidatedMethod({
     if (Meteor.isServer) {
       Meteor._sleepForMs(100);
 
-      return Subject.update({ _id: doc._id }, { $set: doc });
+      return Subject.update({_id: doc._id}, {$set: doc});
     }
   }
 });
@@ -141,17 +141,17 @@ export const upsertSubject = new ValidatedMethod({
           filter: {
             _id: "subject_restApi"
           },
-          opts: { seq: 1 }
+          opts: {seq: 1}
         });
         doc._id = _id.toString();
       }
       try {
-        return Subject.upsert({ _id: doc._id }, { $set: doc });
+        return Subject.upsert({_id: doc._id}, {$set: doc});
       } catch (error) {
         if (_id) {
           _id = getNextSeq({
-            filter: { _id: "subject_restApi" },
-            seq: { seq: -1 }
+            filter: {_id: "subject_restApi"},
+            seq: {seq: -1}
           });
         }
       }
@@ -166,7 +166,7 @@ export const softRemoveSubject = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: String
   }).validator(),
-  run({ _id }) {
+  run({_id}) {
     if (Meteor.isServer) {
       return Subject.softRemove(_id);
     }
@@ -180,7 +180,7 @@ export const restoreSubject = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: String
   }).validator(),
-  run({ _id }) {
+  run({_id}) {
     if (Meteor.isServer) {
       return Subject.restore(_id);
     }
@@ -194,12 +194,47 @@ export const removeSubject = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: String
   }).validator(),
-  run({ _id }) {
+  run({_id}) {
     if (Meteor.isServer) {
-      return Subject.remove(_id);
+      return SUBJECT.removeSubject(_id)
     }
   }
 });
+
+
+export class SUBJECT {
+  static findSubject(selector, options) {
+    return Subject.find(selector, options).fetch();
+  }
+
+  static findOneSubject(selector, options) {
+    return Subject.findOne(selector, options);
+  }
+
+  static removeSubject(selector) {
+    return Subject.remove(selector);
+  }
+}
+
+
+JsonRoutes.add("get", "/find-subject/:params", function (req, res, next) {
+  res.charset = "utf-8";
+  const selector = req.params.params ? JSON.parse(req.params.params) : {};
+
+  JsonRoutes.sendResult(res, {
+    data: SUBJECT.findSubject(selector)
+  });
+});
+
+JsonRoutes.add("get", "/findOne-subject/:params", function (req, res, next) {
+  res.charset = "utf-8";
+  const selector = req.params.params ? JSON.parse(req.params.params) : {};
+
+  JsonRoutes.sendResult(res, {
+    data: SUBJECT.findOneSubject(selector)
+  });
+});
+
 
 rateLimit({
   methods: [
