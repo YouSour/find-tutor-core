@@ -1,33 +1,22 @@
-import { Meteor } from "meteor/meteor";
-import Student from "./collections";
-/*
-403: forbidden
-404: not found
-200: ok
-201: created
-304: not modified
-*/
-//meteor
-Meteor.methods({
-  find_student(selector, options) {
-    STUDENT.findStudent(selector, options);
-  },
-  findOne_student(selector, options) {
-    STUDENT.findOneStudent(selector, options);
-  },
-  insert_student(doc, callback) {
-    STUDENT.insertStudent(doc, callback);
-  },
-  update_student(selector, modifier, options, callback) {
-    STUDENT.updateStudent(selector, modifier, options, callback);
-  },
-  remove_student(selector, callback) {
-    STUDENT.removeStudent(selector, callback);
-  }
+import { SUBJECT } from "./methods";
+
+JsonRoutes.add("get", "/find_subject/:selector/:options", function(
+  req,
+  res,
+  next
+) {
+  res.charset = "utf-8";
+  const selector = req.params.selector ? JSON.parse(req.params.selector) : {};
+  const options = req.params.options ? JSON.parse(req.params.options) : {};
+  let data = {};
+  data.result = SUBJECT.findSubject(selector, options);
+  data.code = "200";
+  JsonRoutes.sendResult(res, {
+    data: data
+  });
 });
 
-//rest
-JsonRoutes.add("get", "/find_student/:selector/:options", function(
+JsonRoutes.add("get", "/findOne_subject/:selector/:options", function(
   req,
   res,
   next
@@ -36,32 +25,18 @@ JsonRoutes.add("get", "/find_student/:selector/:options", function(
   const selector = req.params.selector ? JSON.parse(req.params.selector) : {};
   const options = req.params.options ? JSON.parse(req.params.options) : {};
   let data = {};
-  data.result = STUDENT.findStudent(selector, options);
+  data.result = SUBJECT.findOneSubject(selector, options);
   data.code = "200";
   JsonRoutes.sendResult(res, {
     data: data
   });
 });
-JsonRoutes.add("get", "/findOne_student/:selector/:options", function(
-  req,
-  res,
-  next
-) {
-  res.charset = "utf-8";
-  const selector = req.params.selector ? JSON.parse(req.params.selector) : {};
-  const options = req.params.options ? JSON.parse(req.params.options) : {};
-  let data = {};
-  data.result = STUDENT.findOneStudent(selector, options);
-  data.code = "200";
-  JsonRoutes.sendResult(res, {
-    data: data
-  });
-});
-JsonRoutes.add("get", "/insert_student/:doc", function(req, res, next) {
+
+JsonRoutes.add("get", "/insert_subject/:doc", function(req, res, next) {
   res.charset = "utf-8";
   const doc = req.params.doc ? JSON.parse(req.params.doc) : {};
 
-  STUDENT.insertStudent(doc, (error, result) => {
+  SUBJECT.insertSubject(doc, (error, result) => {
     let data = {};
     if (error) {
       data.code = "403";
@@ -76,7 +51,8 @@ JsonRoutes.add("get", "/insert_student/:doc", function(req, res, next) {
     });
   });
 });
-JsonRoutes.add("get", "/update_student/:selector/:modifier/:options", function(
+
+JsonRoutes.add("get", "/update_subject/:selector/:modifier/:options", function(
   req,
   res,
   next
@@ -85,7 +61,7 @@ JsonRoutes.add("get", "/update_student/:selector/:modifier/:options", function(
   const selector = req.params.selector ? JSON.parse(req.params.selector) : {};
   const modifier = req.params.modifier ? JSON.parse(req.params.modifier) : {};
   const options = req.params.options ? JSON.parse(req.params.options) : {};
-  STUDENT.updateStudent(selector, modifier, options, (error, result) => {
+  SUBJECT.updateSubject(selector, modifier, options, (error, result) => {
     let data = {};
     if (error) {
       data.code = "403";
@@ -100,11 +76,12 @@ JsonRoutes.add("get", "/update_student/:selector/:modifier/:options", function(
     });
   });
 });
-JsonRoutes.add("get", "/remove_student/:selector", function(req, res, next) {
+
+JsonRoutes.add("get", "/remove_subject/:selector", function(req, res, next) {
   res.charset = "utf-8";
   const selector = req.params.selector ? JSON.parse(req.params.selector) : {};
 
-  STUDENT.removeStudent(selector, (error, result) => {
+  SUBJECT.removeSubject(selector, (error, result) => {
     let data = {};
     if (error) {
       data.code = "403";
@@ -119,26 +96,3 @@ JsonRoutes.add("get", "/remove_student/:selector", function(req, res, next) {
     });
   });
 });
-
-//model
-class STUDENT {
-  static findStudent(selector, options) {
-    return Student.find(selector, options).fetch();
-  }
-
-  static findOneStudent(selector, options) {
-    return Student.findOne(selector, options);
-  }
-
-  static insertStudent(doc, callback) {
-    return Student.insert(doc, callback);
-  }
-
-  static updateStudent(selector, modifier, options, callback) {
-    return Student.update(selector, { $set: modifier }, options, callback);
-  }
-
-  static removeStudent(selector, callback) {
-    return Student.remove(selector, callback);
-  }
-}

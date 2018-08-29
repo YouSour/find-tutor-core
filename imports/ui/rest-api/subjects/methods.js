@@ -1,6 +1,6 @@
-import {Meteor} from "meteor/meteor";
-import {ValidatedMethod} from "meteor/mdg:validated-method";
-import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
+import { Meteor } from "meteor/meteor";
+import { ValidatedMethod } from "meteor/mdg:validated-method";
+import { CallPromiseMixin } from "meteor/didericis:callpromise-mixin";
 import SimpleSchema from "simpl-schema";
 import _ from "lodash";
 
@@ -26,11 +26,10 @@ export const findSubject = new ValidatedMethod({
       optional: true
     }
   }).validator(),
-  run({selector, options}) {
+  run({ selector, options }) {
     if (Meteor.isServer) {
       selector = selector || {};
       options = options || {};
-
       return SUBJECT.findSubject(selector, options);
     }
   }
@@ -52,14 +51,14 @@ export const findOneSubject = new ValidatedMethod({
       optional: true
     }
   }).validator(),
-  run({selector, options}) {
+  run({ selector, options }) {
     if (Meteor.isServer) {
       console.log(selector);
       Meteor._sleepForMs(100);
       selector = selector || {};
       options = options || {};
 
-      return SUBJECT.findOne(selector, options)
+      return SUBJECT.findOne(selector, options);
     }
   }
 });
@@ -76,7 +75,7 @@ export const insertSubject = new ValidatedMethod({
       const _id = getNextSeq({
         // Mandatory
         filter: {
-          _id: "subject_restApi"
+          _id: "ft_subjects"
           // type: '001' // BranchId
         },
         // Optional
@@ -90,12 +89,12 @@ export const insertSubject = new ValidatedMethod({
       });
       try {
         doc._id = _id.toString();
-        return Subject.insert(doc);
+        return SUBJECT.insertSubject(doc);
       } catch (error) {
         // Decrement seq
         getNextSeq({
-          filter: {_id: "subject_restApi"},
-          opts: {seq: -1}
+          filter: { _id: "ft_subjects" },
+          opts: { seq: -1 }
         });
       }
     }
@@ -115,74 +114,7 @@ export const updateSubject = new ValidatedMethod({
   run(doc) {
     if (Meteor.isServer) {
       Meteor._sleepForMs(100);
-
-      return Subject.update({_id: doc._id}, {$set: doc});
-    }
-  }
-});
-
-// Upsert Category
-export const upsertSubject = new ValidatedMethod({
-  name: "Subject.methods.upsertSubject",
-  mixins: [CallPromiseMixin],
-  validate: _.clone(SubjectSchema)
-    .extend({
-      _id: {
-        type: String,
-        optional: true
-      }
-    })
-    .validator(),
-  run(doc) {
-    if (Meteor.isServer) {
-      let _id;
-      if (!doc._id) {
-        _id = getNextSeq({
-          filter: {
-            _id: "subject_restApi"
-          },
-          opts: {seq: 1}
-        });
-        doc._id = _id.toString();
-      }
-      try {
-        return Subject.upsert({_id: doc._id}, {$set: doc});
-      } catch (error) {
-        if (_id) {
-          _id = getNextSeq({
-            filter: {_id: "subject_restApi"},
-            seq: {seq: -1}
-          });
-        }
-      }
-    }
-  }
-});
-
-// Soft remove
-export const softRemoveSubject = new ValidatedMethod({
-  name: "Subject.methods.softRemoveSubject",
-  mixins: [CallPromiseMixin],
-  validate: new SimpleSchema({
-    _id: String
-  }).validator(),
-  run({_id}) {
-    if (Meteor.isServer) {
-      return Subject.softRemove(_id);
-    }
-  }
-});
-
-// Restore
-export const restoreSubject = new ValidatedMethod({
-  name: "Subject.methods.restoreSubject",
-  mixins: [CallPromiseMixin],
-  validate: new SimpleSchema({
-    _id: String
-  }).validator(),
-  run({_id}) {
-    if (Meteor.isServer) {
-      return Subject.restore(_id);
+      return SUBJECT.updateSubject({ _id: doc._id }, doc);
     }
   }
 });
@@ -194,13 +126,12 @@ export const removeSubject = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: String
   }).validator(),
-  run({_id}) {
+  run({ _id }) {
     if (Meteor.isServer) {
-      return SUBJECT.removeSubject(_id)
+      return SUBJECT.removeSubject(_id);
     }
   }
 });
-
 
 export class SUBJECT {
   static findSubject(selector, options) {
@@ -211,30 +142,17 @@ export class SUBJECT {
     return Subject.findOne(selector, options);
   }
 
-  static removeSubject(selector) {
-    return Subject.remove(selector);
+  static insertSubject(doc, callback) {
+    return Subject.insert(doc, callback);
+  }
+  static updateSubject(selector, modifier, options, callback) {
+    return Subject.update(selector, { $set: modifier }, options, callback);
+  }
+
+  static removeSubject(selector, callback) {
+    return Subject.remove(selector, callback);
   }
 }
-
-
-JsonRoutes.add("get", "/find-subject/:params", function (req, res, next) {
-  res.charset = "utf-8";
-  const selector = req.params.params ? JSON.parse(req.params.params) : {};
-
-  JsonRoutes.sendResult(res, {
-    data: SUBJECT.findSubject(selector)
-  });
-});
-
-JsonRoutes.add("get", "/findOne-subject/:params", function (req, res, next) {
-  res.charset = "utf-8";
-  const selector = req.params.params ? JSON.parse(req.params.params) : {};
-
-  JsonRoutes.sendResult(res, {
-    data: SUBJECT.findOneSubject(selector)
-  });
-});
-
 
 rateLimit({
   methods: [
@@ -242,8 +160,6 @@ rateLimit({
     findOneSubject,
     insertSubject,
     updateSubject,
-    softRemoveSubject,
-    restoreSubject,
     removeSubject
   ]
 });
