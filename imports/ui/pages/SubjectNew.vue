@@ -44,6 +44,7 @@
               >
                 <el-color-picker v-model="form.firstColor"></el-color-picker>
                 <el-color-picker v-model="form.secondColor"></el-color-picker>
+                </el-form-item>
           </el-col>
         </el-row>
         </el-form>

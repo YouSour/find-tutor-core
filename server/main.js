@@ -1,21 +1,19 @@
-import {Meteor} from 'meteor/meteor';
-import {Accounts} from 'meteor/accounts-base';
-import './config/account';
+import { Meteor } from "meteor/meteor";
+import { Accounts } from "meteor/accounts-base";
+import "./config/account";
 // import './publication';
 import "../imports/startup/server";
 
-
 Meteor.startup(() => {
-// Enable cross origin requests for all endpoints
   JsonRoutes.setResponseHeaders({
     "Cache-Control": "no-store",
-    "Pragma": "no-cache",
+    Pragma: "no-cache",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
+    "Access-Control-Allow-Headers":
+      "Content-Type, Authorization, X-Requested-With"
   });
-
-
+  // Enable cross origin requests for all endpoints
   // if (Meteor.users.find({}).count() === 0) {
   // Accounts.createUser({
   //   username: "super",
@@ -23,8 +21,6 @@ Meteor.startup(() => {
   //   password: "123456"
   // })
   // }
-
-
   // JsonRoutes.add("get", "/find_subject/:params", function (req, res, next) {
   //   res.charset = "utf-8";
   //   const params = req.params.params;
@@ -33,6 +29,4 @@ Meteor.startup(() => {
   //     data: params ? SUBJECT.findOne(params) : SUBJECT.find()
   //   });
   // });
-
-
 });
