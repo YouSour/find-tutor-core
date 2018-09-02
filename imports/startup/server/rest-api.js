@@ -10,6 +10,9 @@ import "../../ui/rest-api/students/rest-api";
 //teachers
 import "../../ui/rest-api/teachers/methods";
 import "../../ui/rest-api/teachers/rest-api";
-//teachers
+//followers
 import "../../ui/rest-api/followers/methods";
 import "../../ui/rest-api/followers/rest-api";
+//following
+import "../../ui/rest-api/following/methods";
+import "../../ui/rest-api/following/rest-api";
