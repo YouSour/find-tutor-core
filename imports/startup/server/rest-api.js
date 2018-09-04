@@ -16,3 +16,6 @@ import "../../ui/rest-api/followers/rest-api";
 //following
 import "../../ui/rest-api/following/methods";
 import "../../ui/rest-api/following/rest-api";
+//post
+import "../../ui/rest-api/posts/methods";
+import "../../ui/rest-api/posts/rest-api";
