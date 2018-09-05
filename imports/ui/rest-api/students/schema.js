@@ -26,10 +26,11 @@ export default new SimpleSchema({
     optional: true
   },
   locations: {
-    type: Array,
+    type: Object,
     optional: true
   },
-  "locations.$": { type: String },
+  "locations.longitude": { type: String },
+  "locations.latitude": { type: String },
   phoneNumber: {
     type: String,
     optional: true
