@@ -17,6 +17,10 @@ export default new SimpleSchema({
     type: Date,
     optional: true
   },
+  spokenLanguage: {
+    type: String,
+    optional: true
+  },
   email: {
     type: String,
     optional: true
