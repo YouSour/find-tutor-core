@@ -22,3 +22,6 @@ import "../../ui/rest-api/posts/rest-api";
 //message
 import "../../ui/rest-api/messages/methods";
 import "../../ui/rest-api/messages/rest-api";
+//comment
+import "../../ui/rest-api/comments/methods";
+import "../../ui/rest-api/comments/rest-api";
