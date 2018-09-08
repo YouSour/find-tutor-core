@@ -28,3 +28,6 @@ import "../../ui/rest-api/comments/rest-api";
 //feedback
 import "../../ui/rest-api/feedback/methods";
 import "../../ui/rest-api/feedback/rest-api";
+//rates
+import "../../ui/rest-api/rates/methods";
+import "../../ui/rest-api/rates/rest-api";
