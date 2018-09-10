@@ -15,11 +15,11 @@ export default new SimpleSchema({
     type: Object,
     optional: true
   },
-  "colors.firstColor": {
+  "colors.primary": {
     type: String,
     optional: true
   },
-  "colors.secondColor": {
+  "colors.secondary": {
     type: String,
     optional: true
   }

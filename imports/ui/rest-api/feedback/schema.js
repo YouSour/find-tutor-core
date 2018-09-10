@@ -7,14 +7,10 @@ export default new SimpleSchema({
   studentId: {
     type: String
   },
-  comment: {
+  message: {
     type: String
   },
-  createdAt: {
-    type: Date,
-    optional: true
-  },
-  updatedAt: {
+  createdDate: {
     type: Date,
     optional: true
   }

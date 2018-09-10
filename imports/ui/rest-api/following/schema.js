@@ -6,5 +6,9 @@ export default new SimpleSchema({
   },
   teacherId: {
     type: String
+  },
+  createdDate: {
+    type: Date,
+    optional: true
   }
 });

@@ -89,7 +89,7 @@ JsonRoutes.add("get", "/remove_teacher/:selector", function(req, res, next) {
   res.charset = "utf-8";
   const selector = req.params.selector ? JSON.parse(req.params.selector) : {};
 
-  teacher.removeTeacher(selector, (error, result) => {
+  TEACHER.removeTeacher(selector, (error, result) => {
     let data = {};
     if (error) {
       data.code = "403";
