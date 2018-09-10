@@ -25,6 +25,9 @@ export default new SimpleSchema({
   duration: {
     type: Number
   },
+  address: {
+    type: String
+  },
   locations: {
     type: Object,
     optional: true
@@ -33,6 +36,9 @@ export default new SimpleSchema({
   "locations.latitude": { type: String },
   studentLimit: {
     type: Number
+  },
+  teacherId: {
+    type: String
   },
   subjectId: {
     type: String
