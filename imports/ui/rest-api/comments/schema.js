@@ -5,19 +5,21 @@ export default new SimpleSchema({
     type: String
   },
   teacherId: {
-    type: String
+    type: String,
+    optional: true
   },
   studentId: {
-    type: String
+    type: String,
+    optional: true
   },
   comment: {
-    type: String
+    type: String,
   },
-  createdAt: {
+  createdDate: {
     type: Date,
     optional: true
   },
-  updatedAt: {
+  updatedDate: {
     type: Date,
     optional: true
   }

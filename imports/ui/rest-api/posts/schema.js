@@ -40,7 +40,7 @@ export default new SimpleSchema({
   date: {
     type: String
   },
-  statTime: {
+  startTime: {
     type: String
   },
   endTime: {
