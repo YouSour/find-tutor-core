@@ -9,6 +9,13 @@ export default new SimpleSchema({
     type: String,
     optional: true
   },
+  photo: {
+    type: String,
+    optional: true
+  },
+  password: {
+    type: String
+  },
   gender: {
     type: String,
     optional: true
@@ -33,7 +40,8 @@ export default new SimpleSchema({
     type: String,
     optional: true
   },
-  type: { //references??? from firebase?
+  type: {
+    //references??? from firebase?
     type: Array
   },
   "type.$": { type: String },
@@ -59,6 +67,9 @@ export default new SimpleSchema({
   stars: {
     type: Number,
     optional: true
+  },
+  termAndCondition: {
+    type: Boolean
   },
   createdDate: {
     type: Date,
