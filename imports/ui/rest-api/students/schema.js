@@ -17,6 +17,12 @@ export default new SimpleSchema({
     type: Date,
     optional: true
   },
+  password: {
+    type: String
+  },
+  photo: {
+    type: String
+  },
   email: {
     type: String,
     optional: true
@@ -34,6 +40,9 @@ export default new SimpleSchema({
   phoneNumber: {
     type: String,
     optional: true
+  },
+  termAndCondition: {
+    type: Boolean
   },
   createdDate: {
     type: Date,
