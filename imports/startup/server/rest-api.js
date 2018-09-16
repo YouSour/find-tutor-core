@@ -25,6 +25,9 @@ import "../../ui/rest-api/messages/rest-api";
 //comments
 import "../../ui/rest-api/comments/methods";
 import "../../ui/rest-api/comments/rest-api";
+//comments
+import "../../ui/rest-api/likes/methods";
+import "../../ui/rest-api/likes/rest-api";
 //feedback
 import "../../ui/rest-api/feedback/methods";
 import "../../ui/rest-api/feedback/rest-api";
