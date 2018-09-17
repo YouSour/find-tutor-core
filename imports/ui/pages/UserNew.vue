@@ -296,7 +296,7 @@ export default {
           // Make data
           const data = _.clone(this.form);
           delete data.confirmPassword;
-          console.log(data);
+
           insertUser
             .callPromise({ user: data })
             .then(result => {

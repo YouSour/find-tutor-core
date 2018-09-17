@@ -53,7 +53,6 @@ export const findOneStudent = new ValidatedMethod({
   }).validator(),
   run({ selector, options }) {
     if (Meteor.isServer) {
-      console.log(selector);
       Meteor._sleepForMs(100);
       selector = selector || {};
       options = options || {};

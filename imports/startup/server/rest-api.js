@@ -7,6 +7,9 @@ import "../../ui/rest-api/subjects/rest-api";
 //students
 import "../../ui/rest-api/students/methods";
 import "../../ui/rest-api/students/rest-api";
+//students account
+import "../../ui/rest-api/student-accounts/methods";
+import "../../ui/rest-api/student-accounts/rest-api";
 //teachers
 import "../../ui/rest-api/teachers/methods";
 import "../../ui/rest-api/teachers/rest-api";
