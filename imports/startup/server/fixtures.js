@@ -4,7 +4,6 @@ import { Roles } from "meteor/alanning:roles";
 import { Accounts } from "meteor/accounts-base";
 
 Meteor.startup(function() {
-
   if (Meteor.isDevelopment) {
   }
 
@@ -13,7 +12,6 @@ Meteor.startup(function() {
     const data = EJSON.parse(Assets.getText("user-account.json"));
     data.forEach(({ username, email, password, profile, roles }) => {
       const userExists = Accounts.findUserByUsername(username);
-
       if (!userExists) {
         const userId = Accounts.createUser({
           username,
@@ -21,7 +19,7 @@ Meteor.startup(function() {
           password,
           profile
         });
-        Roles.addUsersToRoles(userId, roles)
+        Roles.addUsersToRoles(userId, roles);
       }
     });
   }

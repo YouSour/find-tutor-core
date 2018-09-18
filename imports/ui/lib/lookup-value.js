@@ -55,7 +55,11 @@ const LookupValue = {
     { label: "Male", value: "Male" },
     { label: "Female", value: "Female" }
   ],
-  type: [{ label: "Super", value: "Super" }, { label: "Admin", value: "Admin" }]
+  type: [
+    { label: "Super", value: "super" },
+    { label: "Admin", value: "admin" },
+    { label: "Guest", value: "guest" }
+  ]
 };
 
 export default LookupValue;

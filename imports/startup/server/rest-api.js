@@ -13,6 +13,9 @@ import "../../ui/rest-api/student-accounts/rest-api";
 //teachers
 import "../../ui/rest-api/teachers/methods";
 import "../../ui/rest-api/teachers/rest-api";
+//teachers account
+import "../../ui/rest-api/teacher-accounts/methods";
+import "../../ui/rest-api/teacher-accounts/rest-api";
 //followers
 import "../../ui/rest-api/followers/methods";
 import "../../ui/rest-api/followers/rest-api";
