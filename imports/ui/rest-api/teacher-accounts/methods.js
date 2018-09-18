@@ -5,13 +5,13 @@ import { CallPromiseMixin } from "meteor/didericis:callpromise-mixin";
 import rateLimit from "/imports/utils/rate-limit";
 
 import {
-  StudentAccountsInsertSchema,
-  StudentAccountsUpdateSchema
+  TeacherAccountsInsertSchema,
+  TeacherAccountsUpdateSchema
 } from "./schema";
 
 // Find
-export const findStudentAccount = new ValidatedMethod({
-  name: "StudentAccount.methods.findStudentAccount",
+export const findTeacherAccount = new ValidatedMethod({
+  name: "TeacherAccount.methods.findTeacherAccount",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     selector: {
@@ -35,8 +35,8 @@ export const findStudentAccount = new ValidatedMethod({
 });
 
 // Find One
-export const findOneStudentAccount = new ValidatedMethod({
-  name: "StudentAccount.methods.findOneStudentAccount",
+export const findOneTeacherAccount = new ValidatedMethod({
+  name: "TeacherAccount.methods.findOneTeacherAccount",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     _id: String
@@ -51,11 +51,11 @@ export const findOneStudentAccount = new ValidatedMethod({
 });
 
 // Insert
-export const insertStudentAccount = new ValidatedMethod({
-  name: "StudentAccount.methods.insertStudentAccount",
+export const insertTeacherAccount = new ValidatedMethod({
+  name: "TeacherAccount.methods.insertTeacherAccount",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
-    user: StudentAccountsInsertSchema
+    user: TeacherAccountsInsertSchema
   }).validator(),
   run({ user }) {
     if (Meteor.isServer) {
@@ -74,7 +74,7 @@ export const insertStudentAccount = new ValidatedMethod({
             gender: user.gender,
             phoneNumber: user.phoneNumber,
             address: user.address,
-            type: "student"
+            type: "teacher"
           }
         });
 
@@ -87,11 +87,11 @@ export const insertStudentAccount = new ValidatedMethod({
 });
 
 // Update
-export const updateStudentAccount = new ValidatedMethod({
-  name: "StudentAccount.methods.updateStudentAccount",
+export const updateTeacherAccount = new ValidatedMethod({
+  name: "TeacherAccount.methods.updateTeacherAccount",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
-    user: StudentAccountsUpdateSchema
+    user: TeacherAccountsUpdateSchema
   }).validator(),
   run({ user }) {
     if (Meteor.isServer) {
@@ -111,13 +111,13 @@ export const updateStudentAccount = new ValidatedMethod({
                 gender: user.gender,
                 phoneNumber: user.phoneNumber,
                 address: user.address,
-                type: "student"
+                type: "teacher"
               }
             }
           }
         );
         // Update roles
-        // Roles.setUserRoles(user._id, ["student"]);
+        // Roles.setUserRoles(user._id, ["Teacher"]);
 
         // Update password
         Accounts.setPassword(user._id, user.password, { logout: false });
@@ -133,8 +133,8 @@ export const updateStudentAccount = new ValidatedMethod({
   }
 });
 
-export const removeStudentAccount = new ValidatedMethod({
-  name: "StudentAccount.methods.removeStudentAccount",
+export const removeTeacherAccount = new ValidatedMethod({
+  name: "TeacherAccount.methods.removeTeacherAccount",
   mixins: [CallPromiseMixin],
   validate: new SimpleSchema({
     _id: { type: String }
@@ -154,16 +154,16 @@ export const removeStudentAccount = new ValidatedMethod({
 });
 
 //model
-export class STUDENTACCOUNT {
-  static findStudentAccount(selector, options) {
+export class TEACHERACCOUNT {
+  static findTeacherAccount(selector, options) {
     return Meteor.users.find(selector, options).fetch();
   }
 
-  static findOneStudentAccount(selector, options) {
+  static findOneTeacherAccount(selector, options) {
     return Meteor.users.findOne(selector, options);
   }
 
-  static insertStudentAccount(user) {
+  static insertTeacherAccount(user) {
     try {
       // Add new user
       const userId = Accounts.createUser({
@@ -176,7 +176,7 @@ export class STUDENTACCOUNT {
           gender: user.gender,
           phoneNumber: user.phoneNumber,
           address: user.address,
-          type: "student"
+          type: "teacher"
         }
       });
 
@@ -186,7 +186,7 @@ export class STUDENTACCOUNT {
     }
   }
 
-  static updateStudentAccount(user) {
+  static updateTeacherAccount(user) {
     try {
       // Update user
       Meteor.users.update(
@@ -201,13 +201,13 @@ export class STUDENTACCOUNT {
               gender: user.gender,
               phoneNumber: user.phoneNumber,
               address: user.address,
-              type: "student"
+              type: "teacher"
             }
           }
         }
       );
       // Update roles
-      // Roles.setUserRoles(user._id, ["student"]);
+      // Roles.setUserRoles(user._id, ["Teacher"]);
 
       // Update password
       Accounts.setPassword(user._id, user.password);
@@ -216,7 +216,7 @@ export class STUDENTACCOUNT {
     }
   }
 
-  static removeStudentAccount(_id) {
+  static removeTeacherAccount(_id) {
     try {
       return Meteor.users.remove({ _id });
     } catch (e) {
@@ -227,10 +227,10 @@ export class STUDENTACCOUNT {
 
 rateLimit({
   methods: [
-    findStudentAccount,
-    findOneStudentAccount,
-    insertStudentAccount,
-    updateStudentAccount,
-    removeStudentAccount
+    findTeacherAccount,
+    findOneTeacherAccount,
+    insertTeacherAccount,
+    updateTeacherAccount,
+    removeTeacherAccount
   ]
 });

@@ -63,12 +63,10 @@ export const insertUser = new ValidatedMethod({
           password: user.password,
           profile: {
             fullName: user.fullName,
-            // branchPermissions: user.branchPermissions,
+            type: user.type,
             status: user.status
           }
         });
-        // Add roles
-        // Roles.addUsersToRoles(userId, user.roles);
 
         return userId;
       } catch (e) {
@@ -100,7 +98,6 @@ export const updateUser = new ValidatedMethod({
               "emails.0.address": user.email,
               profile: {
                 fullName: user.fullName,
-                // branchPermissions: user.branchPermissions,
                 type: user.type,
                 status: user.status
               }
@@ -108,7 +105,7 @@ export const updateUser = new ValidatedMethod({
           }
         );
         // Update roles
-        // Roles.setUserRoles(user._id, user.roles);
+        Roles.setUserRoles(user._id, user.type);
 
         // Update password
         Accounts.setPassword(user._id, user.password, { logout: false });
